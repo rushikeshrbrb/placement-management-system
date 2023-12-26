@@ -1,0 +1,188 @@
+/* Importing Google Fonts */
+@import url('https://fonts.googleapis.com/css?family=Abel|Abril+Fatface|Alegreya|Arima+Madurai|Dancing+Script|Dosis|Merriweather|Oleo+Script|Overlock|PT+Serif|Pacifico|Playball|Playfair+Display|Share|Unica+One|Vibur');
+
+/* Start Global rules */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+/* End Global rules */
+
+/* Start body rules */
+body {
+    background-image: linear-gradient(-225deg, #E3FDF5 0%, #FFE6FA 100%);
+    background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+
+    font-family: 'Vibur', cursive;
+    /* the main font */
+    font-family: 'Abel', sans-serif;
+    opacity: .95;
+}
+
+/* Start form attributes */
+form {
+    width: 800px;
+    min-height: 600px;
+    height: auto;
+    border-radius: 5px;
+    margin: 2% auto;
+    box-shadow: 0 9px 50px hsla(20, 67%, 75%, 0.31);
+    padding: 2%;
+    background-image: linear-gradient(-225deg, #E3FDF5 50%, #FFE6FA 50%);
+}
+/* form Container */
+form .con {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content: space-around;
+    justify-content: space-around;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin: 0 auto;
+}
+.con {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-justify-content: space-around;
+  justify-content: space-around;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  width: 90%; /* Adjust the width as needed */
+  max-width: 800px; /* Optionally, set a maximum width */
+}
+
+/* the header form form */
+header {
+    margin: 2% auto 3% auto;
+    text-align: center;
+}
+/* Login title form form */
+header h2 {
+    font-size: 250%;
+    font-family: 'Playfair Display', serif;
+    color: #010b06;
+}
+/* A welcome message or an explanation of the login form */
+header p { letter-spacing: 0.05em; }
+
+/* input-item styling */
+/* Input elements styling */
+.form-input {
+  width: calc(100% - 18px); /* Adjust the width as needed */
+  height: 40px; /* Adjust the height as needed */
+  margin-top: 1%;
+  padding: 15px;
+  font-size: 16px;
+  font-family: 'Abel', sans-serif;
+  color: #8a3297;
+  outline: none;
+  border: 2px;
+  border-bottom: 1px solid #ccc; /* Add a bottom border */
+  border-radius: 0; /* Remove border-radius */
+  transition: 0.2s linear;
+  position: relative;
+}
+
+/* Adjust placeholder position */
+.input-item label {
+  position: 50px;
+  padding-right: 20px; /* Adjust as needed */
+}
+
+/* Placeholder styling with permanent border */
+.input-item label::before {
+  content: '';
+  width: 100%;
+  height: 100%;
+  border: 2px solid #265678; /* Add a permanent border for the placeholder */
+  box-sizing: border-box;
+  position: relative;
+  pointer-events: none;
+  z-index: -1; /* Move the border behind the text input */
+}
+
+/* Placeholder border when input is focused */
+.form-input:focus + .input-item label::before {
+  border: 1px solid #264b59; /* Add a different border color if needed when focused */
+}
+
+/* Placeholder border when input is not empty */
+.form-input:not(:placeholder-shown) + .input-item label::before {
+  border: 1px solid #cd4f1a; /* Add a different border color if needed when not empty */
+}
+
+
+
+/* inputs form */
+input[class="form-input"] {
+    width: 500px;
+    height: 50px;
+    margin-top: 1%;
+    padding: 15px;
+    font-size: 16px;
+    font-family: 'Abel', sans-serif;
+    color: #6c2f48;
+    outline: none;
+    border: none;
+    border-radius: 0px 5px 5px 0px;
+    transition: 0.2s linear;
+}
+
+
+input[class="form-input"]::placeholder {
+    color: #767879; /* Placeholder text color */
+    padding: 8px;
+    margin: 0;
+    border: 1px solid #2c4f6c; /* Add a permanent border for the placeholder */
+}
+input[id="txt-input"] { width: 250px; }
+
+/* focus styling */
+input:focus {
+    transform: translateX(-2px);
+    border-radius: 5px;
+}
+
+/* buttons styling */
+button {
+    display: inline-block;
+    color: #252537;
+    width: 300px;
+    height: 30px;
+    padding: 0 20px;
+    background: #338ab3;
+    border-radius: 5px;
+    outline: 10px;
+    border: 2px;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.2s linear;
+    margin: 7% auto;
+    letter-spacing: 0.05em;
+}
+
+/* Sign Up button styling */
+.sign-up { background: #52b3a1; 
+border:2px;}
+
+/* buttons hover styling */
+button:hover {
+    transform: translateY(3px);
+    box-shadow: none;
+}
+
+/* buttons hover Animation */
+button:hover {
+    animation: ani9 0.4s ease-in-out infinite alternate;
+}
+@keyframes ani9 {
+    0% { transform: translateY(3px); }
+    100% { transform: translateY(5px); }
+}
+tbody{
+    border:none;
+}
