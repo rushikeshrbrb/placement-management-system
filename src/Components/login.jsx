@@ -15,7 +15,7 @@ import {
 from 'mdb-react-ui-kit';
 
 
-export function Login() {
+function Login() {
     return (
         <MDBContainer className="my-5 gradient-form">
     
@@ -73,4 +73,4 @@ export function Login() {
         </MDBContainer>
       );
 }
-
+export default Login;
