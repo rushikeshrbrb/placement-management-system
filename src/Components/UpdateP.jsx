@@ -9,7 +9,7 @@ import {
   MDBCheckbox,
 } from "mdb-react-ui-kit";
 
-function Contact() {
+function UpdateP() {
   return (
     <MDBContainer fluid className="p-3 my-5 h-custom">
       <MDBRow>
@@ -23,16 +23,10 @@ function Contact() {
 
         <MDBCol col="4" md="6">
           <div className="divider d-flex align-items-center my-4">
-            <h1 className="text-center fw-bold mx-3 mb-0">Contact Us</h1>
+            <h1 className="text-center fw-bold mx-3 mb-0">Update Password</h1>
           </div>
 
-          <MDBInput
-            wrapperClass="mb-4"
-            label="Enter Name"
-            id="formControlLg"
-            type="text"
-            size="lg"
-          />
+          
           <MDBInput
             wrapperClass="mb-4"
             label="Email address"
@@ -40,14 +34,8 @@ function Contact() {
             type="email"
             size="lg"
           />
-          <MDBInput
-            wrapperClass="mb-4"
-            textarea
-            id="form4Example3"
-            rows={8}
-            label="Message"
-            size="lg"
-          />
+           <MDBInput className='mb-4' type='password' id='form2Example2' label='Password' />
+           <MDBInput className='mb-4' type='password' id='form2Example2' label='Re-enter Password' />
 
           <div className="text-center text-md-start mt-4 pt-2">
             <MDBBtn className="mb-0 px-5" size="lg">
@@ -60,4 +48,4 @@ function Contact() {
   );
 }
 
-export default Contact;
+export default UpdateP;
