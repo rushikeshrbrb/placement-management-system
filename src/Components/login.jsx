@@ -26,12 +26,14 @@ export function Login() {
     setPassword(value);
   };
 
+
   const handleUserTypeChange = (event) => {
     const value = event.target.value;
     setUserType(value);
   };
 
   const isEmailValid = () => {
+
     
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
@@ -137,6 +139,7 @@ export function Login() {
                   Forgot password?
                 </a>
               </div>
+
             </form>
 
             <div className="d-flex flex-row align-items-center justify-content-center pb-4 mb-4">
