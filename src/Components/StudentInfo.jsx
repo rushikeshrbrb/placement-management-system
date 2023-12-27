@@ -12,23 +12,27 @@ const StudentInfo = () => {
   const [graduationCGPA, setGraduationCGPA] = useState('');
   const [resume, setResume] = useState('');
   
+  
 
   const handleNameChange = (e) => {
-    setName(e.target.value);
+    const value = e.target.value.replace(/[^A-Za-z\s]/g, '');
+    setName(value);
+    
   };
 
   const handleTenthPassYearChange = (e) => {
     const value = e.target.value.replace(/\D/g, '').slice(0, 4);
     setTenthPassYear(value);
+    
   };
 
   const handleTenthPercentageChange = (e) => {
     let value = e.target.value.replace(/[^\d.%]/g, '');
   
-    // Remove leading zeros
+   
     value = value.replace(/^0+(\d)/, '$1');
   
-    // Ensure the value is within the range of 1% to 100%
+    
     const floatValue = parseFloat(value);
     if (isNaN(floatValue) || floatValue < 1) {
       value = '1';
@@ -50,7 +54,7 @@ const StudentInfo = () => {
     // Remove leading zeros
     value = value.replace(/^0+(\d)/, '$1');
   
-    // Ensure the value is within the range of 1% to 100%
+    
     const floatValue = parseFloat(value);
     if (isNaN(floatValue) || floatValue < 1) {
       value = '1';
@@ -67,13 +71,58 @@ const StudentInfo = () => {
   };
 
   const handleGraduationCGPAChange = (e) => {
-    const value = e.target.value.replace(/[^\d.]/g, '');
+    let value = e.target.value.replace(/[^\d.%]/g, '');
+  
+   
+    value = value.replace(/^0+(\d)/, '$1');
+  
+    
+    const floatValue = parseFloat(value);
+    if (isNaN(floatValue) || floatValue < 1) {
+      value = '1';
+    } else if (floatValue > 10) {
+      value = '10';
+    }
+  
     setGraduationCGPA(value);
   };
-
+  
+  
   const handleResumeChange = (e) => {
     setResume(e.target.value);
   };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    
+    if (
+      name &&
+      tenthPassYear &&
+      tenthPercentage &&
+      twelfthPassYear &&
+      twelfthPercentage &&
+      graduationYear &&
+      graduationCGPA &&
+      resume
+    ) {
+
+      alert('Successfully submitted!');
+
+      setName('');
+      setTenthPassYear('');
+      setTenthPercentage('');
+      setTwelfthPassYear('');
+      setTwelfthPercentage('');
+      setGraduationYear('');
+      setGraduationCGPA('');
+      setResume('');               
+    } else {
+      
+      alert('Please fill out all fields before submitting.');
+    }
+  };
+
 
   return (
     <div className="overlay">
@@ -90,16 +139,19 @@ const StudentInfo = () => {
                     <div className="input-item">
                       <label htmlFor="name">
                         <i className="fa fa-user-circle"></i> Name
-                      </label>
+                      </label >
+                      
                     </div>
                   </td>
                   <td>
                     <div className="input-item">
+                    
                       <input
                         className="form-input"
                         type="text"
                         id="name"
                         placeholder="Enter your full name"
+                        
                         value={name}
                         onChange={handleNameChange}
                         required
@@ -265,12 +317,12 @@ const StudentInfo = () => {
             </table>
           </div>
 
-          <div className="other">
-            <button className="btn submits sign-up">
-              Submit
-              <i className="fa fa-user-plus" aria-hidden="true"></i>
-            </button>
-          </div>
+          <div className="other"  >
+        <button className="btn submits submit"  onClick={handleSubmit}>
+         Submit
+          <i className="fa fa-user-plus" aria-hidden="true"></i>
+        </button>
+      </div>
         </div>
       </form>
     </div>
