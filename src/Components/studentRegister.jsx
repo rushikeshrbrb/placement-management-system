@@ -14,7 +14,7 @@ import {
 } from "mdb-react-ui-kit";
 import { Form } from "react-bootstrap";
 
-export function StudentRegister() {
+export default function StudentRegister() {
   const [formData, setFormData] = useState({
     name: "",
     address: "",
