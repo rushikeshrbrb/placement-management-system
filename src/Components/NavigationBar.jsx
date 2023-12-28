@@ -10,7 +10,7 @@ export default function NavigationBar() {
         <span class="navbar-toggler-icon"></span>
     </button>
     <a class="navbar-brand md-3" href="#" id="navbardp">
-        <img src="https://teresas.ac.in/wp-content/uploads/2018/04/placement-services.png" width="45" height="40" class="d-inline-block align-top" alt=""/>
+        <img src="https://teresas.ac.in/wp-content/uploads/2018/04/placement-services.png" width="50" height="45" class="d-inline-block align-top" alt=""/>
         <span class="menu-collapsed">PMS</span>
     </a>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
@@ -38,7 +38,6 @@ export default function NavigationBar() {
         <button type="button" class="btn btn-light">
           <img height={32} width={40} src="https://static.vecteezy.com/system/resources/previews/018/742/015/original/minimal-profile-account-symbol-user-interface-theme-3d-icon-rendering-illustration-isolated-in-transparent-background-png.png" value="Profile"/>Profile</button>
         </div>
-
 </nav>
 
     );

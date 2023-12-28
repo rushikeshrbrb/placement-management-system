@@ -6,6 +6,7 @@ import { Col, Container, Image, Row } from 'react-bootstrap';
 import CompanyRegister from './companyRegister';
 import { useNavigate } from 'react-router';
 import StudentRegister from './studentRegister';
+import UpdateP from './UpdateP';
 
 export default function AdminSidebar() {
   useEffect(() => {
@@ -15,7 +16,7 @@ export default function AdminSidebar() {
     }
   }, []);
   const sidebarWidth = 250; // Set your desired sidebar width
-  const ContentWidth = 1700; 
+  const ContentWidth = 1450; 
 
   const [currentPage, setCurrentPage] = useState(null);
 
@@ -33,32 +34,43 @@ export default function AdminSidebar() {
   return (
     <Container fluid >
       <Row>
-        <Col xs={3} className="sidebar sticky-top " style={{ width: `${sidebarWidth}px`, padding:`5px`, margin:`80px 0px` }}>
+        <Col xs={3} className="sidebar sticky-top " style={{ width: `${sidebarWidth}px`, padding:`5px`, margin:`70px 0px` }}>
           <div > <center>
             <Image height={100} width={100} src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" roundedCircle fluid />
             <a class="active" >Admin: admin</a>
-            <a onClick={() => handleButtonClick('studentRegister')} >Profile</a>
-            <a onClick={() => handleButtonClick('studentRegister')} >Student Register</a>
-            <a onClick={() => handleButtonClick('companyRegister')} >Company Register</a>
-            <a onClick={() => handleButtonClick('studentRegister')} >Manage student</a>
-            <a onClick={() => handleButtonClick('studentRegister')} >Manage company</a>
-            <a onClick={() => handleButtonClick('studentRegister')} >Placed Student</a>
-            <a onClick={() => handleButtonClick('studentRegister')} >Reports</a>
-            <a onClick={() => handleButtonClick('studentRegister')} >change password</a>
+            <a onClick={() => handleButtonClick('adminprofile')} >Profile</a>
+            <a onClick={() => handleButtonClick('Registerstudent')} >Register Student</a>
+            <a onClick={() => handleButtonClick('RegisterCompany')} >Register Company</a>
+            <a onClick={() => handleButtonClick('managestudent')} >Manage student</a>
+            <a onClick={() => handleButtonClick('managecompany')} >Manage company</a>
+            <a onClick={() => handleButtonClick('placedstudent')} >Placed Student</a>
+            <a onClick={() => handleButtonClick('Reports')} >Reports</a>
+            <a onClick={() => handleButtonClick('changepassword')} >change password</a>
+            <a onClick={handleLogout}>Logout</a>
             <a onClick={handleLogout}>Logout</a>
 
           </center>
 
           </div>
         </Col>
-        <Col xs={9} className="content overflow-auto" style={{ width: `${ContentWidth}px` , padding:`20px`, margin:`30px 0px` }}>
+        <Col xs={9} className="content overflow-auto" style={{ width: `${ContentWidth}px` , padding:`20px`}}>
           {currentPage === 'studentRegister' && <StudentRegister/>}
-          {currentPage === 'companyRegister' && <CompanyRegister />}
-          {currentPage === 'companyRegister' && <CompanyRegister />}
-          {currentPage === 'companyRegister' && <CompanyRegister />}
-          {currentPage === 'companyRegister' && <CompanyRegister />}
-          {currentPage === 'companyRegister' && <CompanyRegister />}
-          {currentPage === 'companyRegister' && <CompanyRegister />}
+           {/* profile component to be write here */}
+
+          {currentPage === 'Registerstudent' && <StudentRegister/>}
+
+          {currentPage === 'RegisterCompany' && <CompanyRegister />}
+
+          {/* managestudent component to be write here */}
+          {currentPage === 'managestudent' && <CompanyRegister />}
+
+          {/* managecompany component to be write here */}
+          {currentPage === 'managecompany' && <CompanyRegister />}
+
+          {/* Reports component to be write here */}
+          {currentPage === 'Reports' && <CompanyRegister />}
+
+          {currentPage === 'changepassword' && <UpdateP/>}
 
         </Col>
       </Row>

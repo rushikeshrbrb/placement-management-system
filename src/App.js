@@ -16,6 +16,7 @@ import NavigationBar from './Components/NavigationBar';
 import Footer from './Components/Footer';
 import Login from './Components/Login';
 import AboutUs from './Components/AboutUs';
+import ForgetPassword from './Components/ForgetPassword';
 
 
 function App() {
@@ -50,6 +51,9 @@ function App() {
 
         <Route path="/aboutus" element={<AboutUs></AboutUs>}></Route>
 
+        <Route path="/updatepassword" element={<UpdateP></UpdateP>}></Route>
+
+        <Route path="/forgetpassword" element={<ForgetPassword></ForgetPassword>}></Route>
       </Routes>
   <Footer></Footer>
     </BrowserRouter>

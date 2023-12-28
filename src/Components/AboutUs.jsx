@@ -1,12 +1,15 @@
 import React from "react";
 import { Alert, Button, Card, Col, Container, Row } from "react-bootstrap";
 import Dipak from "../Images/dipak.jpg";
+import Sushant from "../Images/sushant.png";
+import Anisha from "../Images/anisha.jpg";
+
+
 
 
 export default function AboutUs() {
     return (
         <Container fluid>
-            <br/><br/><br/>
             <Alert
                 variant="success"
                 style={{
@@ -20,20 +23,20 @@ export default function AboutUs() {
             <Row>
                 <Col lg={4}>
                     <h3 style={{ color: 'black', fontWeight: 'bold' }}>Vision</h3>
-
                     <p style={{ color: 'black', fontStyle: 'italic' }}>
-                       ------------------------------------------------
+                        Go-Fit is a health and fitness company offering digital and offline experiences across fitness, nutrition, and mental well-being.
+                        With the aim to make fitness fun and easy, and medical and lifestyle care hassle-free.
                     </p>
                 </Col>
                 <Col lg={4}>
                     <h3 style={{ color: 'black', fontWeight: 'bold' }}>Mission</h3>
-                    <p style={{ color: 'black', fontStyle: 'italic' }}>------------------------------------------
+                    <p style={{ color: 'black', fontStyle: 'italic' }}>Go-fit's mission is to “make health easy”.
 
-                        </p>
+                        Through our products and services, we want to enable people to significantly improve their overall health, reduce the risk of lifestyle diseases and enable a long, disease free life.</p>
                 </Col>
                 <Col lg={4}>
                     <h3 style={{ color: 'black', fontWeight: 'bold' }}>Our History</h3>
-                    <p style={{ color: 'black', fontStyle: 'italic' }}>--------------------------------------------</p>
+                    <p style={{ color: 'black', fontStyle: 'italic' }}>Co-founded by Anuja Gupta, Yogesh patel and Dipak Wani in CDAC -Mumbai 2023, the company is headquartered in Kharghar, Mumbai.</p>
                 </Col>
             </Row>
 
@@ -46,8 +49,10 @@ export default function AboutUs() {
                 }}
             > <h1>Meet Our Team </h1>
             </Alert>
+<center>
 
-            <Row >
+
+            <Row className="mx-5" >
                 <Col lg={4} style={{ textAlign: "center" }}>
                     <Card style={{ width: '25rem' }}>
                         <Card.Img variant="top" src={Dipak} />
@@ -64,10 +69,10 @@ export default function AboutUs() {
                 </Col>
                 <Col lg={4} style={{ textAlign: "center" }}>
 
-                    <Card style={{ width: '25rem' }}>
-                        <Card.Img variant="top" src={Dipak} />
+                <Card style={{ width: '25rem', transition: 'transform 0.3s', ':hover': { transform: 'scale(1.05)' } }}>
+                        <Card.Img variant="top" src={Sushant} />
                         <Card.Body>
-                            <Card.Title>Dips</Card.Title>
+                            <Card.Title>Anuja Gupta</Card.Title>
                             <Card.Text>
                                 PRN : 230940320022 <br />
                                 PG-DAC Student, Sep-23 batch <br />
@@ -79,9 +84,9 @@ export default function AboutUs() {
                 </Col>
                 <Col lg={4} style={{ textAlign: "center" }}>
                     <Card style={{ width: '25rem' }}>
-                        <Card.Img variant="top" src={Dipak} />
+                        <Card.Img variant="top" src={Anisha} />
                         <Card.Body>
-                            <Card.Title>Dip</Card.Title>
+                            <Card.Title>Yogesh Patel</Card.Title>
                             <Card.Text>
                             PRN : 230940320132 <br />
                                 PG-DAC Student, Sep-23 batch <br />
@@ -92,7 +97,10 @@ export default function AboutUs() {
                     </Card>
                 </Col>
             </Row>
+            <hr />
             <Row >
+            <Col lg={2} style={{ textAlign: "center" }}>
+                </Col>
                 <Col lg={4} style={{ textAlign: "center" }}>
                     <Card style={{ width: '25rem' }}>
                         <Card.Img variant="top" src={Dipak} />
@@ -109,10 +117,10 @@ export default function AboutUs() {
                 </Col>
                 <Col lg={4} style={{ textAlign: "center" }}>
 
-                    <Card style={{ width: '25rem' }}>
-                        <Card.Img variant="top" src={Dipak} />
+                <Card style={{ width: '25rem', transition: 'transform 0.3s', ':hover': { transform: 'scale(1.05)' } }}>
+                        <Card.Img variant="top" src={Sushant} />
                         <Card.Body>
-                            <Card.Title>Dips</Card.Title>
+                            <Card.Title>Anuja Gupta</Card.Title>
                             <Card.Text>
                                 PRN : 230940320022 <br />
                                 PG-DAC Student, Sep-23 batch <br />
@@ -122,23 +130,13 @@ export default function AboutUs() {
                         </Card.Body>
                     </Card>
                 </Col>
-                <Col lg={4} style={{ textAlign: "center" }}>
-                    <Card style={{ width: '25rem' }}>
-                        <Card.Img variant="top" src={Dipak} />
-                        <Card.Body>
-                            <Card.Title>Dip</Card.Title>
-                            <Card.Text>
-                            PRN : 230940320132 <br />
-                                PG-DAC Student, Sep-23 batch <br />
-                                CDAC Mumbai KH 
-                            </Card.Text>
-                            <Button variant="info"><a href="https://www.linkedin.com/in/yogesh-patel-8b426b229/">LinkedIn</a></Button>
-                        </Card.Body>
-                    </Card>
+                <Col lg={2} style={{ textAlign: "center" }}>
                 </Col>
             </Row>
-<hr />
-
+           
+            </center>
+            <hr />
+            
             <Row>
                 <Col>
                     <Card>

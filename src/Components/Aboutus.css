@@ -1,0 +1,56 @@
+/* Apply digital-themed styles to the container */
+.Container {
+    background-color: #1a1a1a; /* Dark background color */
+    color: #00e6e6; /* Light text color */
+    padding: 20px;
+  }
+  
+  /* Style for the success alert */
+  .Alert.success {
+    background-color: #1a1a1a; /* Dark background color */
+    color: #00e6e6; /* Light text color */
+  }
+  
+  /* Style for the danger alert */
+  .Alert.danger {
+    background-color: #1a1a1a; /* Dark background color */
+    color: darkblue; /* Dark blue text color */
+  }
+  
+  /* Apply digital-themed styles to the card */
+  .Card {
+    background-color: #1a1a1a; /* Dark background color */
+    color: #00e6e6; /* Light text color */
+    border: 1px solid #00e6e6; /* Light border color */
+    box-shadow: 0 0 10px rgba(0, 230, 230, 0.3); /* Light box shadow */
+    transition: transform 0.3s; /* Smooth transition effect */
+  }
+  
+  /* Hover effect for the card */
+  .Card:hover {
+    transform: scale(1.05); /* Scale up on hover */
+  }
+  
+  /* Apply styles to the card title */
+  .Card.Title {
+    color: #00e6e6; /* Light text color */
+  }
+  
+  /* Apply styles to the card text */
+  .Card.Text {
+    color: #00e6e6; /* Light text color */
+  }
+  
+  /* Apply styles to the button inside the card */
+  .Button {
+    background-color: #00e6e6; /* Light background color */
+    color: #1a1a1a; /* Dark text color */
+    border: none; /* Remove button border */
+  }
+  
+  /* Hover effect for the button inside the card */
+  .Button:hover {
+    background-color: #008080; /* Darker background color on hover */
+    color: #1a1a1a; /* Dark text color */
+  }
+  
