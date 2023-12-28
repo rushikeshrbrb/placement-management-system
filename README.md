@@ -1,6 +1,10 @@
 <<<<<<< HEAD
 # placement-management-system 1
 =======
+<<<<<<< HEAD
+# placement-management-system 1
+=======
+>>>>>>> origin/master
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -71,4 +75,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<<<<<<< HEAD
+=======
 >>>>>>> 377781f13d3ac24bb79cebed686f1b56b9cfc2f2
+>>>>>>> origin/master
