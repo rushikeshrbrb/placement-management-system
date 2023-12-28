@@ -15,7 +15,7 @@ export function CompanySidebar() {
     }
   }, []);
   const sidebarWidth = 250; // Set your desired sidebar width
-  const sidebarWidth2 = 1470; 
+  const ContentWidth = 1700; 
 
   const [currentPage, setCurrentPage] = useState(null);
 
@@ -33,8 +33,8 @@ export function CompanySidebar() {
   return (
     <Container fluid >
       <Row>
-        <Col xs={3} className="sidebar sticky-top " style={{ width: `${sidebarWidth}px` }}>
-          <div > <br /><br /><hr /><center>
+        <Col xs={3} className="sidebar sticky-top " style={{ width: `${sidebarWidth}px`, padding:`5px`, margin:`80px 0px` }}>
+          <div > <center>
             <Image height={100} width={100} src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" roundedCircle fluid />
             <a class="active">Company : name</a>
             <a onClick={() => handleButtonClick('studentRegister')} >Profile</a>
@@ -51,7 +51,7 @@ export function CompanySidebar() {
 
           </div>
         </Col>
-        <Col xs={9} className="content overflow-auto" style={{ width: `${sidebarWidth2}px` }}>
+        <Col xs={9} className="content overflow-auto" style={{ width: `${ContentWidth}px` , padding:`20px`, margin:`30px 0px` }}>
           {currentPage === 'studentRegister' && <StudentRegister />}
           {currentPage === 'companyRegister' && <CompanyRegister />}
           {currentPage === 'companyRegister' && <CompanyRegister />}

@@ -28,7 +28,6 @@ function App() {
         <Route path='/s_sidebar' element={<StudentSidebar></StudentSidebar>}></Route>
         <Route path='/a_sidebar' element={<AdminSidebar></AdminSidebar>}></Route>
         <Route path='/c_sidebar' element={<CompanySidebar></CompanySidebar>}></Route>
-        <Route path="/" element={<Login></Login>}></Route>
         <Route path="/student-register" element={<StudentRegister></StudentRegister>}/>
         <Route path="/company-register" element={<CompanyRegister></CompanyRegister>}></Route>
         <Route path="/student-update" element={<StudentInfo></StudentInfo>}></Route>

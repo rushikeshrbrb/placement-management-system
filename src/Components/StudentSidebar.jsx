@@ -6,6 +6,7 @@ import { Col, Container, Image, Row } from 'react-bootstrap';
 import { CompanyRegister } from './companyRegister';
 import { useNavigate } from 'react-router';
 import { StudentRegister } from './studentRegister';
+import StudentInfo from './StudentInfo';
 
 export function StudentSidebar() {
 
@@ -16,7 +17,7 @@ export function StudentSidebar() {
     }
   }, []);
   const sidebarWidth = 250; // Set your desired sidebar width
-  const sidebarWidth2 = 1470; 
+  const ContentWidth = 1700; 
 
   const [currentPage, setCurrentPage] = useState(null);
 
@@ -33,27 +34,26 @@ export function StudentSidebar() {
   return (
     <Container fluid >
       <Row>
-        <Col xs={3} className="sidebar sticky-top " style={{ width: `${sidebarWidth}px` }}>
-          <div > <br /><br /><hr /><center>
+        <Col xs={3} className="sidebar sticky-top " style={{ width: `${sidebarWidth}px` , padding:`5px`, margin:`75px 0px`  }}>
+          <div ><center>
             <Image height={100} width={100} src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" roundedCircle fluid />
             <a class="active" >Stduent: Name</a>
-            <a onClick={() => handleButtonClick('studentRegister')} >Profile</a>
-            <a onClick={() => handleButtonClick('studentRegister')} >Student Register</a>
-            <a onClick={() => handleButtonClick('companyRegister')} >Company Register</a>
-            <a onClick={() => handleButtonClick('studentRegister')} >Manage student</a>
-            <a onClick={() => handleButtonClick('studentRegister')} >Manage company</a>
-            <a onClick={() => handleButtonClick('studentRegister')} >Placed Student</a>
-            <a onClick={() => handleButtonClick('studentRegister')} >Reports</a>
-            <a onClick={() => handleButtonClick('studentRegister')} >change password</a>
+            <a onClick={() => handleButtonClick('Profile')} >Profile</a>
+            <a onClick={() => handleButtonClick('StudentInfo')} >Edit Profile</a>
+            <a onClick={() => handleButtonClick('studentRegister')} >Apply job</a>
+            <a onClick={() => handleButtonClick('studentRegister')} >Applied job</a>
+            <a onClick={() => handleButtonClick('studentRegister')} >Change password</a>
             <a onClick={handleLogout}>Logout</a>
 
           </center>
 
           </div>
         </Col>
-        <Col xs={9} className="content overflow-auto" style={{ width: `${sidebarWidth2}px` }}>
-          {currentPage === 'studentRegister' && <StudentRegister />}
-          {currentPage === 'companyRegister' && <CompanyRegister />}
+        <Col xs={9} className="content overflow-auto" style={{ width: `${ContentWidth}px`, padding:`20px`}}>
+          {currentPage === 'Profile' && <StudentRegister />}  
+          {/* profile component to be write here */}
+
+          {currentPage === 'StudentInfo' && <StudentInfo/>}
           {currentPage === 'companyRegister' && <CompanyRegister />}
           {currentPage === 'companyRegister' && <CompanyRegister />}
           {currentPage === 'companyRegister' && <CompanyRegister />}
@@ -63,16 +63,6 @@ export function StudentSidebar() {
         </Col>
       </Row>
     </Container>
-
-    //     <a class="active" href="#home"></a>
-    //     <a class="active" href="#home">Student: fname lname</a>
-    //     <a href="#profile">Profile</a>
-    //     <a href="#edit">Edit</a>
-    //     <a href="#job">Jobs</a>
-    //     <a href="#apply">Apply for job</a>
-    //     <a href="#logout">Logout</a>
-    //   </div>
-    // </div>
 
   );
 }
