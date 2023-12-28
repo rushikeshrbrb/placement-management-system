@@ -16,11 +16,11 @@ const Dashboard = () => {
 
   return (
     <div className="dashboard-container">
-      <div className="content sticky-top">
+      {/* <div className="content sticky-top">
         <br /><br /><br />
         <h1>Welcome to the {userType} Dashboard</h1>
         <hr />
-      </div>
+      </div> */}
 
       {userType === "admin" && <AdminSidebar />}
       {userType === "student" && <StudentSidebar />}

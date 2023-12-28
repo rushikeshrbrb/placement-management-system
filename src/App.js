@@ -12,6 +12,7 @@ import { StudentRegister } from './Components/studentRegister';
 import { CompanyRegister } from './Components/companyRegister';
 import StudentInfo from './Components/StudentInfo';
 import { UpdateCompanyProfile } from './Components/UpdateCompanyProfile';
+import { AddNewJob } from './Components/AddNewJob';
 
 
 
@@ -22,7 +23,7 @@ function App() {
     <BrowserRouter>
       <NavigationBar></NavigationBar>
       <Routes>
-        <Route path='/' element={<Login><Footer></Footer></Login>}></Route>
+        <Route path='/' element={<Login></Login>}></Route>
         <Route path="/dashboard/:userType" element={<Dashboard />}></Route>
         <Route path='/s_sidebar' element={<StudentSidebar></StudentSidebar>}></Route>
         <Route path='/a_sidebar' element={<AdminSidebar></AdminSidebar>}></Route>
