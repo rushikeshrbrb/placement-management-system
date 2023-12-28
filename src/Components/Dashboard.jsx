@@ -1,11 +1,12 @@
 
 import React, { useEffect, useState } from 'react';
-import { AdminSidebar } from './AdminSidebar';
-import { StudentSidebar } from './StudentSidebar';
-import { CompanySidebar } from './CompanySidebar';
-import { useParams } from 'react-router-dom';
 
-const Dashboard = () => {
+import { useParams } from 'react-router-dom';
+import AdminSidebar from './AdminSidebar';
+import StudentSidebar from './StudentSidebar';
+import CompanySidebar from './CompanySidebar';
+
+export default function Dashboard(){
   const [userType, setUserType] = useState();
   const params = useParams();
 
@@ -22,11 +23,10 @@ const Dashboard = () => {
         <hr />
       </div> */}
 
-      {userType === "admin" && <AdminSidebar />}
-      {userType === "student" && <StudentSidebar />}
-      {userType === "company" && <CompanySidebar />}
+      {userType === "admin" && <AdminSidebar/>}
+      {userType === "student" && <StudentSidebar/>}
+      {userType === "company" && <CompanySidebar/>}
     </div>
   );
 };
 
-export default Dashboard;

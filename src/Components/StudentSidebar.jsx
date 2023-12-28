@@ -3,12 +3,12 @@
 import React, { useEffect, useState } from 'react';
 import './Sidebar.css';
 import { Col, Container, Image, Row } from 'react-bootstrap';
-import { CompanyRegister } from './companyRegister';
 import { useNavigate } from 'react-router';
-import { StudentRegister } from './studentRegister';
 import StudentInfo from './StudentInfo';
+import StudentRegister from './studentRegister';
+import CompanyRegister from './companyRegister';
 
-export function StudentSidebar() {
+export default function StudentSidebar() {
 
   useEffect(() => {
 
@@ -50,11 +50,12 @@ export function StudentSidebar() {
           </div>
         </Col>
         <Col xs={9} className="content overflow-auto" style={{ width: `${ContentWidth}px`, padding:`20px`}}>
-          {currentPage === 'Profile' && <StudentRegister />}  
+
+          {currentPage === 'Profile' && <StudentRegister/>}  
           {/* profile component to be write here */}
 
           {currentPage === 'StudentInfo' && <StudentInfo/>}
-          {currentPage === 'companyRegister' && <CompanyRegister />}
+          {currentPage === 'companyRegister' && <CompanyRegister/>}
           {currentPage === 'companyRegister' && <CompanyRegister />}
           {currentPage === 'companyRegister' && <CompanyRegister />}
           {currentPage === 'companyRegister' && <CompanyRegister />}

@@ -1,6 +1,6 @@
 
 import './NavigationBar.css'
-export function NavigationBar() {
+export default function NavigationBar() {
 
     return (
 
@@ -16,31 +16,19 @@ export function NavigationBar() {
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav">
             <li class="nav-item active">
-                <a class="nav-link" href="#">Home </a>
+                <a class="nav-link" href="/">Home </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">About us</a>
+                <a class="nav-link" href="/aboutus">About us</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Carreer</a>
+                <a class="nav-link" href="/contact">Carreer</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Preparation</a>
+                <a class="nav-link" href="/contact">Preparation</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Contact us</a>
-            </li>
-
-            <li class="nav-item dropdown d-sm-block d-md-none">
-                <a class="nav-link dropdown-toggle" href="#" id="smallerscreenmenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Menu
-                </a>
-                <div class="dropdown-menu" aria-labelledby="smallerscreenmenu">
-                    <a class="dropdown-item" href="#">Dashboard</a>
-                    <a class="dropdown-item" href="#">Profile</a>
-                    <a class="dropdown-item" href="#">Tasks</a>
-                    <a class="dropdown-item" href="#">Etc ...</a>
-                </div>
+                <a class="nav-link" href="/contact">Contact us</a>
             </li>
         </ul>
 

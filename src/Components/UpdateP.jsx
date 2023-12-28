@@ -9,7 +9,7 @@ import {
   MDBCheckbox,
 } from "mdb-react-ui-kit";
 
-function UpdateP() {
+export default function UpdateP() {
   return (
     <MDBContainer fluid className="p-3 my-5 h-custom">
       <MDBRow>
@@ -48,4 +48,3 @@ function UpdateP() {
   );
 }
 
-export default UpdateP;

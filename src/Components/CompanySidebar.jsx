@@ -2,12 +2,14 @@
 import './Sidebar.css';
 
 import React, { useEffect, useState } from 'react';
-import { Button, Col, Container, Image, Row } from 'react-bootstrap';
-import { CompanyRegister } from './companyRegister';
-import { useNavigate } from 'react-router';
-import { StudentRegister } from './studentRegister';
+import { Col, Container, Image, Row } from 'react-bootstrap';
 
-export function CompanySidebar() {
+import { useNavigate } from 'react-router';
+import StudentRegister from './studentRegister';
+import CompanyRegister from './companyRegister';
+
+
+export default function CompanySidebar() {
   useEffect(() => {
 
     function SidebarCollapse() {
@@ -52,8 +54,8 @@ export function CompanySidebar() {
           </div>
         </Col>
         <Col xs={9} className="content overflow-auto" style={{ width: `${ContentWidth}px` , padding:`20px`, margin:`30px 0px` }}>
-          {currentPage === 'studentRegister' && <StudentRegister />}
-          {currentPage === 'companyRegister' && <CompanyRegister />}
+          {currentPage === 'studentRegister' && <StudentRegister/>}
+          {currentPage === 'companyRegister' && <CompanyRegister/>}
           {currentPage === 'companyRegister' && <CompanyRegister />}
           {currentPage === 'companyRegister' && <CompanyRegister />}
           {currentPage === 'companyRegister' && <CompanyRegister />}
@@ -63,13 +65,6 @@ export function CompanySidebar() {
         </Col>
       </Row>
     </Container>
-
-    // <a class="active" href="#home">Company: cname</a>
-    // <a  href="#profile">Profile</a>
-    // <a  href="#edit">Edit</a>
-    // <a  href="#job">Post job</a>
-    // <a href="#apply">Applicant List</a>
-    // <a  href="#logout">Logout</a>
 
   );
 }

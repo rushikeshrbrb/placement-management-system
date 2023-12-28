@@ -2,12 +2,12 @@
 
 import React, { useEffect, useState } from 'react';
 import './Sidebar.css';
-import { StudentRegister } from './studentRegister';
-import { Button, Col, Container, Image, Row } from 'react-bootstrap';
-import { CompanyRegister } from './companyRegister';
+import { Col, Container, Image, Row } from 'react-bootstrap';
+import CompanyRegister from './companyRegister';
 import { useNavigate } from 'react-router';
+import StudentRegister from './studentRegister';
 
-export function AdminSidebar() {
+export default function AdminSidebar() {
   useEffect(() => {
 
     function SidebarCollapse() {
@@ -52,7 +52,7 @@ export function AdminSidebar() {
           </div>
         </Col>
         <Col xs={9} className="content overflow-auto" style={{ width: `${ContentWidth}px` , padding:`20px`, margin:`30px 0px` }}>
-          {currentPage === 'studentRegister' && <StudentRegister />}
+          {currentPage === 'studentRegister' && <StudentRegister/>}
           {currentPage === 'companyRegister' && <CompanyRegister />}
           {currentPage === 'companyRegister' && <CompanyRegister />}
           {currentPage === 'companyRegister' && <CompanyRegister />}

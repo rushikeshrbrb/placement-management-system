@@ -11,7 +11,7 @@ import {
   MDBInput,
 } from 'mdb-react-ui-kit';
 
-export function Login() {
+export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [userType, setUserType] = useState('');
