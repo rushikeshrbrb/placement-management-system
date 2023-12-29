@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import 'mdb-react-ui-kit/dist/css/mdb.min.css';
 import '../Styles/login.css';
 import '@mdi/font/css/materialdesignicons.min.css';
+import cdaclogo from '../Images/C-DAC.jpg'
 import { useNavigate } from 'react-router-dom';
 import {
   MDBBtn,
@@ -11,7 +12,7 @@ import {
   MDBInput,
 } from 'mdb-react-ui-kit';
 
-export function Login() {
+export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [userType, setUserType] = useState('');
@@ -34,13 +35,13 @@ export function Login() {
 
   const isEmailValid = () => {
 
-    
+
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
   };
 
   const isPasswordValid = () => {
-    
+
     const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
     return passwordRegex.test(password);
   };
@@ -70,32 +71,32 @@ export function Login() {
     setUserType('');
 
     if (userType === 'ADMIN') {
-      navigate('/AddNewJob');
+      navigate('/a_sidebar');
     } else if (userType === 'STUDENT') {
-      navigate('/UpdateCompanyDetail');
+      navigate('/s_sidebar');
     } else if (userType === 'COMPANY') {
-      navigate('/student-update');
+      navigate('/c_sidebar');
     }
-  
+
 
   };
 
   return (
     <MDBContainer className="my-5 gradient-form">
       <MDBRow>
-        <MDBCol col="6" className="mb-5">
-          <div className="d-flex flex-column ms-5">
-            <div className="text-center">
+        <MDBCol col="6" className="mb-3 ">
+          <div className="d-flex flex-column mb-5">
+            <div className="text-center"><br />
               <img
-                src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp"
-                style={{ width: '185px' }}
+                src="https://www.exemplar.co.in/images/temp-staffing.jpg"
+                style={{ width: '200px', height: '150px' }}
                 alt="logo"
               />
-              <h4 className="mt-1 mb-5 pb-1">Welcome To CDAC Mumbai Placement Cell </h4>
-            </div>
-            <p>Please login to your account</p>
+              <h3 className="mt-1 mb-5 pb-1">Welcome To Traning & Placement Cell <br /> CDAC Mumbai  </h3>
 
-            <form onSubmit={handleSubmit}>
+            </div>
+            <form onSubmit={handleSubmit} className="digital-form">
+              <center><b style={{color:"violet"}}>Please login to your account</b></center><hr />
               <MDBInput
                 wrapperClass="mb-4"
                 label="Email address"
@@ -105,6 +106,7 @@ export function Login() {
                 onChange={handleEmailChange}
                 required
               />
+
               <MDBInput
                 wrapperClass="mb-4"
                 label="Password"
@@ -132,38 +134,60 @@ export function Login() {
               </select>
 
               <div className="text-center pt-1 mb-5 pb-1">
-                <MDBBtn type="submit" className="mb-4 w-100 gradient-custom-2">
+                <MDBBtn type="submit" className="mb-2 w-100 digital-btn">
                   Sign in
-                </MDBBtn>
-                <a className="text-muted" href="#!">
-                  Forgot password?
+                </MDBBtn><br />
+<hr />
+                <a className="text-muted" href="/forgetpassword" >
+                  <p style={{color:'red'}}>Forgot password?</p>
                 </a>
+                <p className="mb-0" style={{color:'blue'}}>Don't have an account?
+                <a href="/contact"> <MDBBtn outline className="mx-2" color="danger">
+                  Contact Admin
+                </MDBBtn></a></p>
               </div>
-
             </form>
-
-            <div className="d-flex flex-row align-items-center justify-content-center pb-4 mb-4">
-              <p className="mb-0">Don't have an account?</p>
-              <MDBBtn outline className="mx-2" color="danger">
-                Danger
-              </MDBBtn>
-            </div>
           </div>
         </MDBCol>
 
-        <MDBCol col="6" className="mb-5">
-          <div className="d-flex flex-column justify-content-center gradient-custom-2 h-100 mb-4">
-            <div className="text-white px-3 py-4 p-md-5 mx-md-4">
-              <h4 class="mb-4">We are more than just a company</h4>
-              <p class="small mb-0">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
-                et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                aliquip ex ea commodo consequat.
-              </p>
-            </div>
-          </div>
-        </MDBCol>
+        <MDBCol
+  col="6"
+  className="mb-5 mx-4 digital-col"
+  style={{
+    backgroundImage: 'url("https://d25ecq9zgd9hts.cloudfront.net/img/2018/01/graduation.jpg")',
+    backgroundSize: 'cover',
+    backgroundPosition: 'top',
+  }}
+>
+  <div className="d-flex flex-column justify-content-center gradient-custom-1 h-50 mb-4">
+    <div className="text-white px-3 py-4 p-md-3 mx-md-4">
+    <br /><br /><br /><br /><br /><br />
+    <center> <img src={cdaclogo} alt="" height='100px' width='115px' id="no-background"/></center>
+   
+      <marquee behavior="scroll" direction="left"><center>
+        <b style={{ color: 'yellow', fontSize: 'larger' }}>
+         
+            Commom Campus Placement Program March-2024 <br /> Sep-2023 Batch
+        </b></center>
+      </marquee>
+      <br /><br /><br /> <br /><h4 className="mb-4">We are more than just a company</h4>
+      <hr />
+      <p>A Campus Recruitment Training Program is designed to prepare students for the recruitment process conducted by 
+        various companies during campus placements. Providing clear and concise information will help potential participants understand the value of the Campus Recruitment Training Program. </p>
+<p><b>Opportunities don't happen, you create them..!</b></p>
+    </div>
+  </div>
+</MDBCol>
+
       </MDBRow>
+      <div className="d-flex flex-column justify-content-center gradient-custom-3 h-100 mb-4">
+        <div className="text-white px-3 py-4 p-md-5 mx-md-4"><h2><br /><br /><br /><br /><br /><br /><br /><br />
+        “It's never too late to learn . . . and it's never too early either.” “If you study to remember, you will forget. If you study to understand, you will remember.” “People can take away a lot of things from you . . . but they can't take away what you've learned.”
+Never stop fighting until you arrive at your destined place - that is, the unique you. ...!
+ 
+        </h2>
+       </div>
+      </div>
     </MDBContainer>
   );
 }

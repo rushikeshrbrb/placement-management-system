@@ -1,332 +1,366 @@
+import React, { useState } from "react";
+import "mdb-react-ui-kit/dist/css/mdb.min.css";
+import "../Styles/studentRegister.css";
+import "@mdi/font/css/materialdesignicons.min.css";
+import {
+  MDBBtn,
+  MDBContainer,
+  MDBRow,
+  MDBCol,
+  MDBCard,
+  MDBCardBody,
+  MDBInput,
+} from "mdb-react-ui-kit";
+import { Form } from "react-bootstrap";
 
-import React, { useState } from 'react';
-import '../Styles/StudentInfo.css';
+export default function StudentInfo() {
+  const [formData, setFormData] = useState({
+    name: "",
+    tenthPassYear: "",
+    tenthPercentage: "",
+    twelfthPassYear: "",
+    twelfthPercentage: "",
+    graduationYear: "",
+    graduationPercentage: "",
+    graduationCGPA: "",
+    resume: "",
+  });
 
-const StudentInfo = () => {
-  const [name, setName] = useState('');
-  const [tenthPassYear, setTenthPassYear] = useState('');
-  const [tenthPercentage, setTenthPercentage] = useState('');
-  const [twelfthPassYear, setTwelfthPassYear] = useState('');
-  const [twelfthPercentage, setTwelfthPercentage] = useState('');
-  const [graduationYear, setGraduationYear] = useState('');
-  const [graduationCGPA, setGraduationCGPA] = useState('');
-  const [resume, setResume] = useState('');
+  const [formErrors, setFormErrors] = useState({
+    name: "",
+    tenthPassYear: "",
+    tenthPercentage: "",
+    twelfthPassYear: "",
+    twelfthPercentage: "",
+    graduationYear: "",
+    graduationPercentage: "",
+    graduationCGPA: "",
+    resume: "",
+  });
+
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [showAlert, setShowAlert] = useState(false);
+
+  const handleInputChange = (e) => {
+
+    const { name, value } = e.target;
+    let newValue = value;
+
+    console.log(name+" "+value);
+
   
-  
-
-  const handleNameChange = (e) => {
-    const value = e.target.value.replace(/[^A-Za-z\s]/g, '');
-    setName(value);
-    
-  };
-
-  const handleTenthPassYearChange = (e) => {
-    const value = e.target.value.replace(/\D/g, '').slice(0, 4);
-    setTenthPassYear(value);
-    
-  };
-
-  const handleTenthPercentageChange = (e) => {
-    let value = e.target.value.replace(/[^\d.%]/g, '');
-  
-   
-    value = value.replace(/^0+(\d)/, '$1');
-  
-    
-    const floatValue = parseFloat(value);
-    if (isNaN(floatValue) || floatValue < 1) {
-      value = '1';
-    } else if (floatValue > 100) {
-      value = '100';
+    if (name === "tenthPassYear" || name === "twelfthPassYear" || name === "graduationYear") {
+      // Allow only 4-digit years with digits
+      newValue = /^\d{0,4}$/.test(value) ? value.slice(0, 4) : "";
+    } else if (
+      name === "tenthPercentage" ||
+      name === "twelfthPercentage" ||
+      name === "graduationPercentage"
+    ) {
+      // Allow percentage in decimal between 0 and 100, with optional dot
+      const regex = /^\d*\.?\d*$/;
+    if (regex.test(value)) {
+      const floatValue = parseFloat(value);
+      newValue = floatValue >= 0 && floatValue <= 100 ? value : "";
+    } else {
+      newValue = "";
     }
-  
-    setTenthPercentage(value);
-  };
-
-  const handleTwelfthPassYearChange = (e) => {
-    const value = e.target.value.replace(/\D/g, '').slice(0, 4);
-    setTwelfthPassYear(value);
-  };
-
-  const handleTwelfthPercentageChange = (e) => {
-    let value = e.target.value.replace(/[^\d.%]/g, '');
-  
-    // Remove leading zeros
-    value = value.replace(/^0+(\d)/, '$1');
-  
-    
-    const floatValue = parseFloat(value);
-    if (isNaN(floatValue) || floatValue < 1) {
-      value = '1';
-    } else if (floatValue > 100) {
-      value = '100';
+    } else if (name === "graduationCGPA") {
+      newValue = /^[0-9]*(\.[0-9]{0,2})?$/.test(value) && parseFloat(value) <= 10 ? value : formData[name];
     }
-  
-    setTwelfthPercentage(value);
-  };
 
-  const handleGraduationYearChange = (e) => {
-    const value = e.target.value.replace(/\D/g, '').slice(0, 4);
-    setGraduationYear(value);
-  };
+    setFormData({
+      ...formData,
+      [name]: newValue,
+    });
 
-  const handleGraduationCGPAChange = (e) => {
-    let value = e.target.value.replace(/[^\d.%]/g, '');
-  
-   
-    value = value.replace(/^0+(\d)/, '$1');
-  
     
-    const floatValue = parseFloat(value);
-    if (isNaN(floatValue) || floatValue < 1) {
-      value = '1';
-    } else if (floatValue > 10) {
-      value = '10';
-    }
-  
-    setGraduationCGPA(value);
-  };
-  
-  
-  const handleResumeChange = (e) => {
-    setResume(e.target.value);
+    console.log("Form Submitted:", formData);
+
+    setShowAlert(false);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    
-    if (
-      name &&
-      tenthPassYear &&
-      tenthPercentage &&
-      twelfthPassYear &&
-      twelfthPercentage &&
-      graduationYear &&
-      graduationCGPA &&
-      resume
-    ) {
+    console.log("Form Submitted:", formData);
+    const newErrors = {};
 
-      alert('Successfully submitted!');
+    if (!formData.tenthPassYear) {
+      newErrors.tenthPassYear = "10th Pass Year is required";
+    }
 
-      setName('');
-      setTenthPassYear('');
-      setTenthPercentage('');
-      setTwelfthPassYear('');
-      setTwelfthPercentage('');
-      setGraduationYear('');
-      setGraduationCGPA('');
-      setResume('');               
-    } else {
+    if (!formData.tenthPercentage) {
+      newErrors.tenthPercentage = "10th Percentage is required";
+    }
+
+    if (!formData.twelfthPassYear) {
+      newErrors.twelfthPassYear = "12th Pass Year is required";
+    }
+
+    if (!formData.twelfthPercentage) {
+      newErrors.twelfthPercentage = "12th Percentage is required";
+    }
+
+    if (!formData.graduationYear) {
+      newErrors.graduationYear = "Graduation Pass Year is required";
+    }
+
+    if (!formData.graduationCGPA) {
+      newErrors.graduationCGPA = "Graduation Percentage is required";
+    }
+
+    if (!formData.resume) {
+      newErrors.resume = "Resume is required";
+    }
+
+    setFormErrors(newErrors);
+
+
+
+    if (Object.keys(newErrors).length === 0) {
       
-      alert('Please fill out all fields before submitting.');
+      setShowAlert(true);
+
+      // Clear the success message after 3 seconds (adjust the duration as needed)
+      setTimeout(() => {
+        setShowAlert(false);
+      }, 5000);
+      // Reset form and errors after submitting
+      setFormData({
+        
+        tenthPassYear: "",
+        tenthPercentage: "",
+        twelfthPassYear: "",
+        twelfthPercentage: "",
+        graduationYear: "",
+        graduationPercentage: "",
+        graduationCGPA: "",
+        resume: "",
+      });
+
+      setFormErrors({
+        
+        tenthPassYear: "",
+        tenthPercentage: "",
+        twelfthPassYear: "",
+        twelfthPercentage: "",
+        graduationYear: "",
+        graduationPercentage: "",
+        graduationCGPA: "",
+        resume: "",
+      });
+
+      
+
+      setIsSubmitted(true);
     }
   };
 
+  const handleReset = () => {
+    setFormData({
+      name: "",
+      tenthPassYear: "",
+      tenthPercentage: "",
+      twelfthPassYear: "",
+      twelfthPercentage: "",
+      graduationYear: "",
+      graduationPercentage: "",
+      graduationCGPA: "",
+      resume: "",
+    });
+
+    setFormErrors({
+      name: "",
+      tenthPassYear: "",
+      tenthPercentage: "",
+      twelfthPassYear: "",
+      twelfthPercentage: "",
+      graduationYear: "",
+      graduationPercentage: "",
+      graduationCGPA: "",
+      resume: "",
+    });
+
+    setIsSubmitted(false);
+  };
 
   return (
-    <div className="overlay">
-      <header className="head-form">
-        <h2>Upload Student Info</h2>
-      </header>
-      <form className="inner-form">
-        <div className="con">
-          <div className="field-set">
-            <table>
-              <tbody>
-                <tr>
-                  <td>
-                    <div className="input-item">
-                      <label htmlFor="name">
-                        <i className="fa fa-user-circle"></i> Name
-                      </label >
-                      
-                    </div>
-                  </td>
-                  <td>
-                    <div className="input-item">
-                    
-                      <input
-                        className="form-input"
-                        type="text"
-                        id="name"
-                        placeholder="Enter your full name"
-                        
-                        value={name}
-                        onChange={handleNameChange}
-                        required
-                      />
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <div className="input-item">
-                      <label htmlFor="tenthPassYear">
-                        <i className="fa fa-calendar"></i> 10th Pass Year
-                      </label>
-                    </div>
-                  </td>
-                  <td>
-                    <div className="input-item">
-                      <input
-                        className="form-input"
-                        type="text"
-                        id="tenthPassYear"
-                        placeholder="Enter your 10th pass year"
-                        value={tenthPassYear}
-                        onChange={handleTenthPassYearChange}
-                        required
-                      />
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <div className="input-item">
-                      <label htmlFor="tenthPercentage">
-                        <i className="fa fa-percent"></i> 10th Percentage
-                      </label>
-                    </div>
-                  </td>
-                  <td>
-                    <div className="input-item">
-                      <input
-                        className="form-input"
-                        type="text"
-                        id="tenthPercentage"
-                        placeholder="Enter your 10th percentage"
-                        value={tenthPercentage}
-                        onChange={handleTenthPercentageChange}
-                        required
-                      />
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <div className="input-item">
-                      <label htmlFor="twelfthPassYear">
-                        <i className="fa fa-calendar"></i> 12th Pass Year
-                      </label>
-                    </div>
-                  </td>
-                  <td>
-                    <div className="input-item">
-                      <input
-                        className="form-input"
-                        type="text"
-                        id="twelfthPassYear"
-                        placeholder="Enter your 12th pass year"
-                        value={twelfthPassYear}
-                        onChange={handleTwelfthPassYearChange}
-                        required
-                      />
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <div className="input-item">
-                      <label htmlFor="twelfthPercentage">
-                        <i className="fa fa-percent"></i> 12th Percentage
-                      </label>
-                    </div>
-                  </td>
-                  <td>
-                    <div className="input-item">
-                      <input
-                        className="form-input"
-                        type="text"
-                        id="twelfthPercentage"
-                        placeholder="Enter your 12th percentage"
-                        value={twelfthPercentage}
-                        onChange={handleTwelfthPercentageChange}
-                        required
-                      />
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <div className="input-item">
-                      <label htmlFor="graduationYear">
-                        <i className="fa fa-calendar"></i> Graduation Year
-                      </label>
-                    </div>
-                  </td>
-                  <td>
-                    <div className="input-item">
-                      <input
-                        className="form-input"
-                        type="text"
-                        id="graduationYear"
-                        placeholder="Enter your graduation year"
-                        value={graduationYear}
-                        onChange={handleGraduationYearChange}
-                        required
-                      />
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <div className="input-item">
-                      <label htmlFor="graduationCGPA">
-                        <i className="fa fa-percent"></i> Graduation CGPA
-                      </label>
-                    </div>
-                  </td>
-                  <td>
-                    <div className="input-item">
-                      <input
-                        className="form-input"
-                        type="text"
-                        id="graduationCGPA"
-                        placeholder="Enter your graduation CGPA"
-                        value={graduationCGPA}
-                        onChange={handleGraduationCGPAChange}
-                        required
-                      />
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <div className="input-item">
-                      <label htmlFor="resume">
-                        <i className="fa fa-upload"></i> Upload Resume
-                      </label>
-                    </div>
-                  </td>
-                  <td>
-                    <div className="input-item">
-                      <input
-                        className="form-input"
-                        type="file"
-                        id="resume"
-                        placeholder="Upload your resume"
-                        value={resume}
-                        onChange={handleResumeChange}
-                        required
-                      />
-                    </div>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+    <MDBContainer fluid className="StudentRegister">
+      <Form onSubmit={handleSubmit}>
+        <MDBRow className="d-flex justify-content-center align-items-center">
+          <MDBCol lg="9" className="my-5">
+            <h1 className="text-black mb-4 text-center fw-bolder">
+              Upload Student Info
+            </h1>
 
-          <div className="other"  >
-        <button className="btn submits submit"  onClick={handleSubmit}>
-         Submit
-          <i className="fa fa-user-plus" aria-hidden="true"></i>
-        </button>
-      </div>
-        </div>
-      </form>
-    </div>
+                         <MDBCard>
+               <MDBCardBody className="px-4">
+                 <MDBRow className="align-items-center pt-4 pb-3">
+                   <MDBCol md="3" className="ps-5">
+                     <h6 className="mb-0">10th Pass Year</h6>
+                   </MDBCol>
+                   <MDBCol md="9" className="pe-5">
+                     <MDBInput
+                      label="Enter Your 10th Pass Year"
+                      size="lg"
+                      type="text"
+                      name="tenthPassYear"
+                      value={formData.tenthPassYear}
+                      onChange={handleInputChange}
+                    />
+                    {formErrors.tenthPassYear && (
+                      <div className="text-danger">
+                        {formErrors.tenthPassYear}
+                      </div>
+                    )}
+                  </MDBCol>
+                </MDBRow>
+                <MDBRow className="align-items-center pt-4 pb-3">
+                  <MDBCol md="3" className="ps-5">
+                    <h6 className="mb-0">10th Percentage</h6>
+                  </MDBCol>
+                  <MDBCol md="9" className="pe-5">
+                    <MDBInput
+                      label="Enter Your 10th Percentage"
+                      size="lg"
+                      type="text"
+                      name="tenthPercentage"
+                      value={formData.tenthPercentage}
+                      onChange={handleInputChange}
+                    />
+                    {formErrors.tenthPercentage && (
+                      <div className="text-danger">
+                        {formErrors.tenthPercentage}
+                      </div>
+                    )}
+                  </MDBCol>
+                </MDBRow>
+                <MDBRow className="align-items-center pt-4 pb-3">
+                  <MDBCol md="3" className="ps-5">
+                    <h6 className="mb-0">12th Pass Year</h6>
+                  </MDBCol>
+                  <MDBCol md="9" className="pe-5">
+                    <MDBInput
+                      label="Enter Your 12th Pass Year"
+                      size="lg"
+                      type="text"
+                      name="twelfthPassYear"
+                      value={formData.twelfthPassYear}
+                      onChange={handleInputChange}
+                    />
+                    {formErrors.twelfthPassYear && (
+                      <div className="text-danger">
+                        {formErrors.twelfthPassYear}
+                      </div>
+                    )}
+                  </MDBCol>
+                </MDBRow>
+                <MDBRow className="align-items-center pt-4 pb-3">
+                  <MDBCol md="3" className="ps-5">
+                    <h6 className="mb-0">12th Percentage</h6>
+                  </MDBCol>
+                  <MDBCol md="9" className="pe-5">
+                    <MDBInput
+                      label="Enter Your 12th Percentage"
+                      size="lg"
+                      type="text"
+                      name="twelfthPercentage"
+                      value={formData.twelfthPercentage}
+                      onChange={handleInputChange}
+                    />
+                    {formErrors.twelfthPercentage && (
+                      <div className="text-danger">
+                        {formErrors.twelfthPercentage}
+                      </div>
+                    )}
+                  </MDBCol>
+                </MDBRow>
+                <MDBRow className="align-items-center pt-4 pb-3">
+                  <MDBCol md="3" className="ps-5">
+                    <h6 className="mb-0">Graduation Year</h6>
+                  </MDBCol>
+                  <MDBCol md="9" className="pe-5">
+                    <MDBInput
+                      label="Enter Your Graduation Year"
+                      size="lg"
+                      type="text"
+                      name="graduationYear"
+                      value={formData.graduationYear}
+                      onChange={handleInputChange}
+                    />
+                    {formErrors.graduationYear && (
+                      <div className="text-danger">
+                        {formErrors.graduationYear}
+                      </div>
+                    )}
+                  </MDBCol>
+                </MDBRow>
+                <MDBRow className="align-items-center pt-4 pb-3">
+                  <MDBCol md="3" className="ps-5">
+                    <h6 className="mb-0">Graduation CGPA</h6>
+                  </MDBCol>
+                  <MDBCol md="9" className="pe-5">
+                    <MDBInput
+                      label="Enter Your Graduation CGPA"
+                      size="lg"
+                      type="text"
+                      name="graduationCGPA"
+                      value={formData.graduationCGPA}
+                      onChange={handleInputChange}
+                    />
+                    {formErrors.graduationCGPA && (
+                      <div className="text-danger">
+                        {formErrors.graduationCGPA}
+                      </div>
+                    )}
+                  </MDBCol>
+                </MDBRow>
+                <MDBRow className="align-items-center pt-4 pb-3">
+                  <MDBCol md="3" className="ps-5">
+                    <h6 className="mb-0">Upload Resume</h6>
+                  </MDBCol>
+                  <MDBCol md="9" className="pe-5">
+                    <MDBInput
+                      label=""
+                      size="lg"
+                      type="file"
+                      name="resume"
+                      value={formData.resume}
+                      onChange={handleInputChange}
+                    />
+                    {formErrors.resume && (
+                      <div className="text-danger">{formErrors.resume}</div>
+                    )}
+                  </MDBCol>
+                </MDBRow>
+                <hr className="mx-n3" />
+
+                {showAlert && (
+                  <div className="alert alert-success mb-3">Data uploaded successfully!</div>
+                )}
+
+                <MDBBtn
+                  className="my-4"
+                  size="lg"
+                  onClick={handleSubmit}
+                  type="submit"
+                >
+                  Submit
+                </MDBBtn>
+                <MDBBtn
+                  className="my-4 mx-4"
+                  size="lg"
+                  type="reset"
+                  onClick={handleReset}
+                >
+                  Reset
+                </MDBBtn>
+              </MDBCardBody>
+            </MDBCard>
+          </MDBCol>
+        </MDBRow>
+      </Form>
+    </MDBContainer>
   );
-};
-
-export default StudentInfo;
+}
