@@ -12,6 +12,7 @@ import {
   MDBInput
 } from "mdb-react-ui-kit";
 import { Form } from "react-bootstrap";
+import { saveInfo } from "../Services/services";
 
 export default function Registration() {
   const [formData, setFormData] = useState({
@@ -76,6 +77,8 @@ export default function Registration() {
 
     if (Object.keys(newErrors).length === 0) {
       console.log("Form Submitted:", formData);
+      saveInfo(formData);
+      
       
     }
   };
