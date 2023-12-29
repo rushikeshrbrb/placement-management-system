@@ -1,56 +1,56 @@
-/* Apply digital-themed styles to the container */
-.Container {
-    background-color: #1a1a1a; /* Dark background color */
-    color: #00e6e6; /* Light text color */
-    padding: 20px;
+/* TeamCard.css */
+
+.card-container {
+  display: flex;
+  justify-content: center;
+}
+
+.card {
+  align-items: center;
+  width: 20rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin: 10px; /* Add margin between cards if needed */
+  transition: transform 0.3s;
+  box-shadow: inset;
+}
+
+.card:hover {
+  transform: scale(1.50);
+}
+
+.card-img {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+  .card:hover {
+    transform: scale(1.10);
+  }
+
+  .card:hover .price::before {
+    animation: text-hover 1s ease-in-out infinite normal;
   }
   
-  /* Style for the success alert */
-  .Alert.success {
-    background-color: #1a1a1a; /* Dark background color */
-    color: #00e6e6; /* Light text color */
+  .card:hover .plan::before {
+    right: 90%;
   }
   
-  /* Style for the danger alert */
-  .Alert.danger {
-    background-color: #1a1a1a; /* Dark background color */
-    color: darkblue; /* Dark blue text color */
+  .card:hover .plan::after {
+    right: -90%;
   }
   
-  /* Apply digital-themed styles to the card */
-  .Card {
-    background-color: #1a1a1a; /* Dark background color */
-    color: #00e6e6; /* Light text color */
-    border: 1px solid #00e6e6; /* Light border color */
-    box-shadow: 0 0 10px rgba(0, 230, 230, 0.3); /* Light box shadow */
-    transition: transform 0.3s; /* Smooth transition effect */
+  .card:hover .buy-button {
+    width: 100%;
+    right: 0%;
+    border-radius: 0%;
   }
-  
-  /* Hover effect for the card */
-  .Card:hover {
-    transform: scale(1.05); /* Scale up on hover */
+  .card:hover .buy-button h3 {
+    left: 50%;
+    transform: translate(-50%, 0%);
+  } 
+
+  /* .card:hover {
+    transform: scale(1.5); 
   }
-  
-  /* Apply styles to the card title */
-  .Card.Title {
-    color: #00e6e6; /* Light text color */
-  }
-  
-  /* Apply styles to the card text */
-  .Card.Text {
-    color: #00e6e6; /* Light text color */
-  }
-  
-  /* Apply styles to the button inside the card */
-  .Button {
-    background-color: #00e6e6; /* Light background color */
-    color: #1a1a1a; /* Dark text color */
-    border: none; /* Remove button border */
-  }
-  
-  /* Hover effect for the button inside the card */
-  .Button:hover {
-    background-color: #008080; /* Darker background color on hover */
-    color: #1a1a1a; /* Dark text color */
-  }
-  
+ */
