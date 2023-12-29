@@ -74,7 +74,7 @@ export function Login() {
     } else if (userType === 'STUDENT') {
       navigate('/UpdateCompanyDetail');
     } else if (userType === 'COMPANY') {
-      navigate('/company-dashboard');
+      navigate('/student-update');
     }
   
 
