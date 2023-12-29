@@ -1,4 +1,4 @@
-/* TeamCard.css */
+/* 
 
 .card-container {
   display: flex;
@@ -10,7 +10,7 @@
   width: 20rem;
   border: 1px solid #ccc;
   border-radius: 5px;
-  margin: 10px; /* Add margin between cards if needed */
+  margin: 10px; 
   transition: transform 0.3s;
   box-shadow: inset;
 }
@@ -25,7 +25,7 @@
 }
 
   .card:hover {
-    transform: scale(1.10);
+    transform: scale(1.15);
   }
 
   .card:hover .price::before {
@@ -50,7 +50,7 @@
     transform: translate(-50%, 0%);
   } 
 
-  /* .card:hover {
+  .card:hover {
     transform: scale(1.5); 
   }
  */

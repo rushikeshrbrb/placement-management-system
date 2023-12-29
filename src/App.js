@@ -17,6 +17,7 @@ import Footer from './Components/Footer';
 import Login from './Components/Login';
 import AboutUs from './Components/AboutUs';
 import ForgetPassword from './Components/ForgetPassword';
+import Registration from './Components/Registration';
 
 
 function App() {
@@ -54,6 +55,8 @@ function App() {
         <Route path="/updatepassword" element={<UpdateP></UpdateP>}></Route>
 
         <Route path="/forgetpassword" element={<ForgetPassword></ForgetPassword>}></Route>
+
+        <Route path="admin/registration" element={<Registration></Registration>}></Route>
       </Routes>
   <Footer></Footer>
     </BrowserRouter>
