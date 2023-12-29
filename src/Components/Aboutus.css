@@ -1,0 +1,56 @@
+/* TeamCard.css */
+
+.card-container {
+  display: flex;
+  justify-content: center;
+}
+
+.card {
+  align-items: center;
+  width: 20rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin: 10px; /* Add margin between cards if needed */
+  transition: transform 0.3s;
+  box-shadow: inset;
+}
+
+.card:hover {
+  transform: scale(1.50);
+}
+
+.card-img {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+  .card:hover {
+    transform: scale(1.10);
+  }
+
+  .card:hover .price::before {
+    animation: text-hover 1s ease-in-out infinite normal;
+  }
+  
+  .card:hover .plan::before {
+    right: 90%;
+  }
+  
+  .card:hover .plan::after {
+    right: -90%;
+  }
+  
+  .card:hover .buy-button {
+    width: 100%;
+    right: 0%;
+    border-radius: 0%;
+  }
+  .card:hover .buy-button h3 {
+    left: 50%;
+    transform: translate(-50%, 0%);
+  } 
+
+  /* .card:hover {
+    transform: scale(1.5); 
+  }
+ */

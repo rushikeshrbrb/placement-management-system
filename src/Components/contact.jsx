@@ -9,7 +9,7 @@ import {
   MDBCheckbox,
 } from "mdb-react-ui-kit";
 
-function Contact() {
+export default function Contact() {
   return (
     <MDBContainer fluid className="p-3 my-5 h-custom">
       <MDBRow>
@@ -60,4 +60,4 @@ function Contact() {
   );
 }
 
-export default Contact;
+

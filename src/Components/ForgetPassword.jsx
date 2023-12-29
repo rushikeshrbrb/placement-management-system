@@ -9,7 +9,7 @@ import {
   MDBCheckbox,
 } from "mdb-react-ui-kit";
 
-export default function UpdateP() {
+export default function ForgetPassword() {
   return (
     <MDBContainer fluid className="p-3 my-5 h-custom">
       <MDBRow>
@@ -23,7 +23,7 @@ export default function UpdateP() {
 
         <MDBCol col="4" md="6">
           <div className="divider d-flex align-items-center my-4">
-            <h1 className="text-center fw-bold mx-3 mb-0">Update Password</h1>
+            <h1 className="text-center fw-bold mx-3 mb-0">Forget Password</h1>
           </div>
 
           
@@ -34,7 +34,7 @@ export default function UpdateP() {
             type="email"
             size="lg"
           />
-           <MDBInput className='mb-4' type='password' id='form2Example2' label='Password' />
+           <MDBInput className='mb-4' type='password' id='form2Example2' label='New_Password' />
            <MDBInput className='mb-4' type='password' id='form2Example2' label='Re-enter Password' />
 
           <div className="text-center text-md-start mt-4 pt-2">

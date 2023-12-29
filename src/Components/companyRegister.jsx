@@ -14,7 +14,7 @@ import React, { useState } from "react";
 import "../Styles/studentRegister.css";
 import { Form } from "react-bootstrap";
 
-export function CompanyRegister() {
+export default function CompanyRegister() {
   const [formData, setFormData] = useState({
     name: "",
     address: "",
