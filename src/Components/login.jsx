@@ -12,6 +12,7 @@ import {
   MDBCol,
   MDBInput,
 } from 'mdb-react-ui-kit';
+import ForgetPassword from './ForgetPassword';
 
 export default function Login() {
   const [email, setEmail] = useState('');
@@ -110,16 +111,29 @@ export default function Login() {
     return () => clearInterval(intervalId);
   }, []);
 
+ 
+  const navigateto=()=> {
+    navigate('/contact');
+
+  };
+
+  const ForgetPwd=()=> {
+    navigate('/forgetpassword');
+
+  };
+
+  
+
 
   return (
     <MDBContainer className="gradient-form custom-col-margin">
       <MDBRow>
-        <MDBCol col="6" className="">
+        <MDBCol col="6" >
           <div className="d-flex flex-column mb-4">
             <div className="text-center"><br />
               <img
                 src="https://www.exemplar.co.in/images/temp-staffing.jpg"
-                style={{ width: '250px', height: '170px' }}
+                style={{ width: '280px', height: '215px' }}
                 alt="logo"
               />
              
@@ -148,7 +162,7 @@ export default function Login() {
 
               {/* <label htmlFor="userType" className="form-label mb-2">
                 User Type
-              </label> */}
+              </label> 
               <select
                 className="form-select mb-4"
                 id="userType"
@@ -161,23 +175,22 @@ export default function Login() {
                 <option value="STUDENT">Student</option>
                 <option value="COMPANY">Company</option>
               </select>
-
+*/}
               <div className="text-center pt-1 mb-5 pb-1">
                 <MDBBtn type="submit" className="mb-2 w-100 digital-btn">
                   Sign in
                 </MDBBtn>
-                <a className="text-muted" href="/forgetpassword" >
-                  <p style={{color:'red'}}>Forgot password?</p>
-                </a>
+                  <p style={{color:'red', cursor:'pointer'}} onClick={ForgetPwd}>Forgot password?</p>
+
                 <p className="mb-0" style={{color:'blue'}}>Don't have an account?
-                <a href="/contact"> <MDBBtn outline className="mx-2" color="danger">
+                <MDBBtn outline className="mx-2" color="danger" onClick={navigateto}>
                   Contact Admin
-                </MDBBtn></a></p>
+                </MDBBtn></p>
               </div>
             </form>
           </div>
         </MDBCol>
-  <MDBCol  col="6" className="ms-3 p-2 mx-4 digital-col"
+  <MDBCol  col="6" className="ms-4 p-2 mx-4 digital-col"
       style={{
         backgroundImage: `url("${backgroundImage}")`,
         backgroundSize: 'cover',

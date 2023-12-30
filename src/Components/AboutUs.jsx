@@ -179,10 +179,10 @@ export default function AboutUs() {
                         <Card.Body >
                             <blockquote className="blockquote mb-5 ">
                                 <p>
-                                    "Teamwork is the ability to work together toward a common vision. The ability to direct individual accomplishments toward organizational objectives."
+                                    "Teamwork is the ability to work together toward a common vision & organizational objectives."
                                 </p>
                                 <footer className="blockquote-footer">
-                                    Andrew Carnegie<cite title="Source Title"> </cite>
+                                    - Andrew Carnegie<cite title="Source Title"> </cite>
                                 </footer>
                             </blockquote>
                         </Card.Body>
@@ -194,7 +194,7 @@ export default function AboutUs() {
                         <Card.Body>
                             <blockquote className="blockquote mb-5 ">
                                 <p>
-                                    Teamwork is the secret that makes common people achieve uncommon results.
+                                    "Teamwork is the secret that makes common people achieve uncommon results."
                                 </p>
                                 <footer className="blockquote-footer">
                                     - Ifeanyi Enoch Onuoha<cite title="Source Title"> </cite>
@@ -209,10 +209,10 @@ export default function AboutUs() {
                         <Card.Body>
                             <blockquote className="blockquote mb-5 ">
                                 <p>
-                                    Teamwork is the secret that makes common people achieve uncommon results. - Ifeanyi Enoch Onuoha
+                               "Great things in business are never done by one person they're done by a team of people."
                                 </p>
                                 <footer className="blockquote-footer">
-                                    Helen Keller <cite title="Source Title"> </cite>
+                                - Steve Jobs<cite title="Source Title"> </cite>
                                 </footer>
                             </blockquote>
                         </Card.Body>
