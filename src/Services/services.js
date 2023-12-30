@@ -2,7 +2,7 @@ import axios from "axios";
 
 export async function saveInfo(regData){
         try {
-            const response=await axios.post("http://localhost:8080/register",regData);
+            const response=await axios.post("http://localhost:6000/register",regData);
             return response.data;
         } catch (error) {
             console.log(error);
