@@ -13,3 +13,7 @@ img{
     border-radius: 10px;
     cursor: pointer;
 }
+
+.custom-col-margin{
+    margin-bottom: -5px;
+}

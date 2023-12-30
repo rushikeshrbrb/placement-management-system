@@ -30,3 +30,13 @@ body {
   #navbardp{
   margin-left: 20px;
   }
+
+  .custom-navbar-padding {
+    padding-top: 3px; 
+    padding-bottom: 3px; 
+  }
+
+  nav, Nav.Link{
+    font-size: larger;
+   text-shadow: #f2f2f2;
+  }

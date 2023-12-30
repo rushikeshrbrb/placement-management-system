@@ -76,3 +76,11 @@
     white-space: nowrap;
   }
   
+#no-background{
+  border-radius: 60px;
+}
+
+.custom-col-margin {
+  margin-top: -20px; /* You can adjust this value to your preference */
+  padding-top: -10px;
+}
