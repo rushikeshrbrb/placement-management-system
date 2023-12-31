@@ -10,6 +10,7 @@ export async function saveInfo(regData){
         }
     }
 
+    
 
 // export async function saveInfo(regData){
 //     try {
