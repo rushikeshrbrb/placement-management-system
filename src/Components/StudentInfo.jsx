@@ -49,7 +49,7 @@ export default function StudentInfo() {
     console.log(name+" "+value);
 
   
-    if (name === "tenthPassYear" || name === "twelfthPassYear" || name === "graduationYear") {
+    if (name === "tenthPassYear" || name === "twelthPassYear" || name === "graduationYear") {
       // Allow only 4-digit years with digits
       newValue = /^\d{0,4}$/.test(value) ? value.slice(0, 4) : "";
     } else if (

@@ -92,7 +92,7 @@ export default function Login() {
                 style={{ width: '200px', height: '150px' }}
                 alt="logo"
               />
-              <h3 className="mt-1 mb-5 pb-1">Welcome To Traning & Placement Cell <br /> CDAC Mumbai  </h3>
+              <h3 className="mt-1 mb-5 pb-1">Welcome To Training & Placement Cell <br /> CDAC Mumbai  </h3>
 
             </div>
             <form onSubmit={handleSubmit} className="digital-form">
@@ -167,7 +167,7 @@ export default function Login() {
       <marquee behavior="scroll" direction="left"><center>
         <b style={{ color: 'yellow', fontSize: 'larger' }}>
          
-            Commom Campus Placement Program March-2024 <br /> Sep-2023 Batch
+          Common Campus Placement Program March-2024 <br /> Sep-2023 Batch
         </b></center>
       </marquee>
       <br /><br /><br /> <br /><h4 className="mb-4">We are more than just a company</h4>
