@@ -12,6 +12,7 @@ import {
   MDBCol,
   MDBInput,
 } from 'mdb-react-ui-kit';
+import ForgetPassword from './ForgetPassword';
 
 export default function Login() {
   const [email, setEmail] = useState('');
@@ -93,18 +94,17 @@ export default function Login() {
   };
 
   return (
-    <MDBContainer className="my-5 gradient-form">
+    <MDBContainer className="gradient-form custom-col-margin">
       <MDBRow>
-        <MDBCol col="6" className="mb-3 ">
-          <div className="d-flex flex-column mb-5">
+        <MDBCol col="6" >
+          <div className="d-flex flex-column mb-4">
             <div className="text-center"><br />
               <img
                 src="https://www.exemplar.co.in/images/temp-staffing.jpg"
-                style={{ width: '200px', height: '150px' }}
+                style={{ width: '280px', height: '215px' }}
                 alt="logo"
               />
-              <h3 className="mt-1 mb-5 pb-1">Welcome To Traning & Placement Cell <br /> CDAC Mumbai  </h3>
-
+             
             </div>
             <form onSubmit={handleSubmit} className="digital-form">
               <center><b style={{color:"violet"}}>Please login to your account</b></center><hr />
@@ -128,9 +128,9 @@ export default function Login() {
                 required
               />
 
-              <label htmlFor="userType" className="form-label mb-2">
+              {/* <label htmlFor="userType" className="form-label mb-2">
                 User Type
-              </label>
+              </label> 
               <select
                 className="form-select mb-4"
                 id="userType"
@@ -143,37 +143,36 @@ export default function Login() {
                 <option value="STUDENT">Student</option>
                 <option value="COMPANY">Company</option>
               </select>
-
+*/}
               <div className="text-center pt-1 mb-5 pb-1">
                 <MDBBtn type="submit" className="mb-2 w-100 digital-btn">
                   Sign in
-                </MDBBtn><br />
-<hr />
-                <a className="text-muted" href="/forgetpassword" >
-                  <p style={{color:'red'}}>Forgot password?</p>
-                </a>
+                </MDBBtn>
+                  <p style={{color:'red', cursor:'pointer'}} onClick={ForgetPwd}>Forgot password?</p>
+
                 <p className="mb-0" style={{color:'blue'}}>Don't have an account?
-                <a href="/contact"> <MDBBtn outline className="mx-2" color="danger">
+                <MDBBtn outline className="mx-2" color="danger" onClick={navigateto}>
                   Contact Admin
-                </MDBBtn></a></p>
+                </MDBBtn></p>
               </div>
             </form>
           </div>
         </MDBCol>
+  <MDBCol  col="6" className="ms-4 p-2 mx-4 digital-col"
+      style={{
+        backgroundImage: `url("${backgroundImage}")`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'top',
+        width: '100%', // Adjust the width if needed
+        height: '600px', // Adjust the height if needed
+      }}>
+         <h3 className="mt-1 mb-5 pb-1 " style={{textAlign:'center', fontWeight:'bolder', backgroundColor:'lightgoldenrodyellow', borderRadius:'10px'}}>Welcome To Traning & Placement Cell <br /> CDAC Mumbai  </h3>
 
-        <MDBCol
-  col="6"
-  className="mb-5 mx-4 digital-col"
-  style={{
-    backgroundImage: 'url("https://d25ecq9zgd9hts.cloudfront.net/img/2018/01/graduation.jpg")',
-    backgroundSize: 'cover',
-    backgroundPosition: 'top',
-  }}
->
-  <div className="d-flex flex-column justify-content-center gradient-custom-1 h-50 mb-4">
-    <div className="text-white px-3 py-4 p-md-3 mx-md-4">
-    <br /><br /><br /><br /><br /><br />
-    <center> <img src={cdaclogo} alt="" height='100px' width='115px' id="no-background"/></center>
+  <div className="d-flex flex-column justify-content-center gradient-custom-1 h-50 mb-2">
+
+    <div className="text-white px-2 py-4 p-md-3 mx-md-2">
+   <br /><br />
+    <center> <img src={cdaclogo} alt="" height='106px' width='115px' id="no-background"/></center>
    
       <marquee behavior="scroll" direction="left"><center>
         <b style={{ color: 'yellow', fontSize: 'larger' }}>
@@ -181,7 +180,7 @@ export default function Login() {
             Commom Campus Placement Program March-2024 <br /> Sep-2023 Batch
         </b></center>
       </marquee>
-      <br /><br /><br /> <br /><h4 className="mb-4">We are more than just a company</h4>
+      <h4 className="mb-4">We are more than just a company</h4>
       <hr />
       <p>A Campus Recruitment Training Program is designed to prepare students for the recruitment process conducted by 
         various companies during campus placements. Providing clear and concise information will help potential participants understand the value of the Campus Recruitment Training Program. </p>

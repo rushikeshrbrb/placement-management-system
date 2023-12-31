@@ -58,6 +58,8 @@ function App() {
 
         <Route path="admin/registration" element={<Registration></Registration>}></Route>
       </Routes>
+
+      
   <Footer></Footer>
     </BrowserRouter>
 
