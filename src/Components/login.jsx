@@ -4,6 +4,7 @@ import '../Styles/login.css';
 import '@mdi/font/css/materialdesignicons.min.css';
 import cdaclogo from '../Images/C-DAC.jpg'
 import { useNavigate } from 'react-router-dom';
+import axios from "axios";
 import {
   MDBBtn,
   MDBContainer,
@@ -17,6 +18,7 @@ export default function Login() {
   const [password, setPassword] = useState('');
   const [userType, setUserType] = useState('');
   const navigate = useNavigate();
+
   const handleEmailChange = (event) => {
     const value = event.target.value;
     setEmail(value);
@@ -27,26 +29,22 @@ export default function Login() {
     setPassword(value);
   };
 
-
   const handleUserTypeChange = (event) => {
     const value = event.target.value;
     setUserType(value);
   };
 
   const isEmailValid = () => {
-
-
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
   };
 
   const isPasswordValid = () => {
-
     const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
     return passwordRegex.test(password);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
     if (!isEmailValid()) {
@@ -64,21 +62,34 @@ export default function Login() {
       return;
     }
 
-    // Continue with your form submission logic
-    console.log('Form submitted:', { email, password, userType });
-    setEmail('');
-    setPassword('');
-    setUserType('');
+    try {
+      const response = await axios.post('http://localhost:8080/user/login', {
+        email,
+        password,
+      });
+        console.log(response.data);
+      // role base login condition
+      if (response.data.status === true) {
+        // Redirect based on user type
+        if (response.data.role === 'ADMIN') {
+          navigate('/a_sidebar');
+        } else if (response.data.role === 'STUDENT') {
+          navigate('/s_sidebar');
+        } else if (response.data.role === 'COMPANY') {
+          navigate('/c_sidebar');
+        } else {
+          alert('Unknown user type');
+        }
 
-    if (userType === 'ADMIN') {
-      navigate('/a_sidebar');
-    } else if (userType === 'STUDENT') {
-      navigate('/s_sidebar');
-    } else if (userType === 'COMPANY') {
-      navigate('/c_sidebar');
+        // Optionally, you can store user data in the state or context for further use
+      } else {
+        // Handle login error, e.g., incorrect credentials
+        alert('Login failed. Please check your credentials.');
+      }
+    } catch (error) {
+      console.error('Login error:', error);
+      alert('An error occurred during login.');
     }
-
-
   };
 
   return (
