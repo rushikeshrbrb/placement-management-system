@@ -29,12 +29,6 @@ export default function Login() {
     setPassword(value);
   };
 
-
-  const handleUserTypeChange = (event) => {
-    const value = event.target.value;
-    setUserType(value);
-  };
-
   const isEmailValid = () => {
 
 
@@ -61,11 +55,6 @@ export default function Login() {
       return;
     }
 
-    if (!userType) {
-      alert('Please select a user type');
-      return;
-    }
-
     // Continue with your form submission logic
     console.log('Form submitted:', { email, password, userType });
     setEmail('');
@@ -79,7 +68,6 @@ export default function Login() {
     } else if (userType === 'COMPANY') {
       navigate('/c_sidebar');
     }
-
 
   };
 
@@ -121,9 +109,6 @@ export default function Login() {
     navigate('/forgetpassword');
 
   };
-
-  
-
 
   return (
     <MDBContainer className="gradient-form custom-col-margin">

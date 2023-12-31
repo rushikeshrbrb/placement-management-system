@@ -13,89 +13,59 @@ import {
 } from "mdb-react-ui-kit";
 
 export function UpdateCompanyProfile() {
-  const [companyName, setCompanyName] = useState("");
-  const [city, setCity] = useState("");
-  const [website, setWebsite] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
-
-  const handleCompanyNameChange = (event) => {
-    setCompanyName(event.target.value);
-  };
-
-  const handleCityChange = (event) => {
-    setCity(event.target.value);
-  };
-
-  const handleWebsiteChange = (event) => {
-    setWebsite(event.target.value);
-  };
-
-  const handleEmailChange = (event) => {
-    setEmail(event.target.value);
-  };
-
-  const handlePhoneChange = (event) => {
-    setPhone(event.target.value);
-  };
-
-  const isValidIndianPhoneNumber = () => {
-    const phoneRegex = /^[789]\d{9}$/;
-    return phoneRegex.test(phone);
-  };
-
-  const isValidEmail = () => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-  };
-
-  const isValidIndianCity = () => {
-    const indianCities = ["Mumbai", "Delhi", "Bangalore","Pune","Hydrabad","Noida","Indore"];
-
-    
-    return indianCities.includes(city);
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-
-    
-    if (!companyName) {
-      alert("Please enter the company name");
-      return;
-    }
-
-    if (!city || !isValidIndianCity()) {
-      alert("Please enter a valid city in India");
-      return;
-    }
-
-    if (website && !website.startsWith("http://") && !website.startsWith("https://")) {
-      alert("Please enter a valid website starting with http:// or https://");
-      return;
-    }
-
-    if (!email || !isValidEmail()) {
-      alert("Please enter a valid email address");
-      return;
-    }
-
-    if (!phone || !isValidIndianPhoneNumber()) {
-      alert("Please enter a valid Indian mobile number");
-      return;
-    }
-
-    
-    console.log('Form submitted:', { companyName, city, website, email, phone });
-
-    
-    setCompanyName("");
-    setCity("");
-    setWebsite("");
-    setEmail("");
-    setPhone("");
-  };
-
+    const [formData, setFormData] = useState({
+      companyName: "",
+      email: "",
+      website: "",
+      phone: "",
+      city: "",
+    });
+  
+    const handleChange = (e) => {
+      setFormData({ ...formData, [e.target.name]: e.target.value });
+    };
+  
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+  
+      try {
+        // Assuming updateuser is an asynchronous function that updates the user data
+        const result = await updateuser(formData, params.id);
+        console.log(params.id);
+        // Assuming setIsSubmitted is a function to set a submitted state
+        setIsSubmitted(true);
+        setTimeout(() => {
+          alert('Company details updated');
+        }, 1000);
+  
+        console.log('Form submitted:', formData);
+  
+        // Clear the form fields after submission
+        setFormData({
+          companyName: "",
+          email: "",
+          website: "",
+          phone: "",
+          city: "",
+        });
+      } catch (error) {
+        console.log(error);
+      }
+    };
+  
+    const populateUserState = async () => {
+      try {
+        // Assuming findcompany is an asynchronous function that fetches user data
+        const result = await findcompany(params.user_id);
+        setFormData(result.user);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+  
+    useEffect(() => {
+      populateUserState();
+    }, [params.user_id]);
   return (
     <MDBContainer fluid className="ADcontainer">
       <MDBRow className="d-flex justify-content-center align-items-center">
@@ -117,8 +87,8 @@ export function UpdateCompanyProfile() {
                       id="form1"
                       type="text"
                       name="name"
-                      value={companyName}
-                      onChange={handleCompanyNameChange}
+                      value={formData.companyName}
+                      onChange={handleChange}
                     />
                   </MDBCol>
                 </MDBRow>
@@ -136,8 +106,8 @@ export function UpdateCompanyProfile() {
                       size="lg"
                       id="form2"
                       type="text"
-                      value={city}
-                      onChange={handleCityChange}
+                      value={formData.city}
+                      onChange={handleChange}
                     />
                   </MDBCol>
                 </MDBRow>
@@ -154,8 +124,8 @@ export function UpdateCompanyProfile() {
                       size="lg"
                       id="form2"
                       type="text"
-                      value={website}
-                      onChange={handleWebsiteChange}
+                      value={formData.website}
+                      onChange={handleChange}
                     />
                   </MDBCol>
                 </MDBRow>
@@ -173,8 +143,8 @@ export function UpdateCompanyProfile() {
                       size="lg"
                       id="form2"
                       type="email"
-                      value={email}
-                      onChange={handleEmailChange}
+                      value={formData.email}
+                      onChange={handleChange}
                     />
                   </MDBCol>
                 </MDBRow>
@@ -192,8 +162,8 @@ export function UpdateCompanyProfile() {
                       size="lg"
                       id="form2"
                       type="text"
-                      value={phone}
-                      onChange={handlePhoneChange}
+                      value={formData.phoneRegex}
+                      onChange={handleChange}
                     />
                   </MDBCol>
                 </MDBRow>
