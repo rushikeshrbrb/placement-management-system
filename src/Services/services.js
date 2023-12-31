@@ -2,7 +2,7 @@ import axios from "axios";
 
 export async function saveInfo(regData){
         try {
-            const response=await axios.post("http://localhost:6000/register",regData);
+            const response=await axios.post("http://localhost:4880/register",regData);
             return response.data;
         } catch (error) {
             console.log(error);
@@ -11,6 +11,26 @@ export async function saveInfo(regData){
     }
 
     
+
+    
+//for update company detalis
+export async function updatecompany(updatedUser,email){
+    try {
+        const response=await axios.put(`http://localhost:4880/User/${email}`,updatedUser);
+        return response.data;
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export async function fetchcompanybyid(user_id){
+    try {
+        const response=await axios.get(`http://localhost:9091/User/${user_id}`);
+        return response.data;
+    } catch (error) {
+        console.log(error);
+    }
+}
 
 // export async function saveInfo(regData){
 //     try {

@@ -30,11 +30,6 @@ export default function Login() {
     setPassword(value);
   };
 
-  const handleUserTypeChange = (event) => {
-    const value = event.target.value;
-    setUserType(value);
-  };
-
   const isEmailValid = () => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
@@ -58,10 +53,59 @@ export default function Login() {
       return;
     }
 
-    if (!userType) {
-      alert('Please select a user type');
-      return;
+    // Continue with your form submission logic
+    console.log('Form submitted:', { email, password, userType });
+    setEmail('');
+    setPassword('');
+    setUserType('');
+
+    if (userType === 'ADMIN') {
+      navigate('/a_sidebar');
+    } else if (userType === 'STUDENT') {
+      navigate('/s_sidebar');
+    } else if (userType === 'COMPANY') {
+      navigate('/c_sidebar');
     }
+
+  };
+
+  const [backgroundImage, setBackgroundImage] = useState(
+    'https://tie.usprogramming8.com/articles/3241.jpg'
+  );
+
+  useEffect(() => {
+   
+    const changeBackgroundImage = () => {
+     
+      const images = [
+        'https://img.freepik.com/free-photo/human-resources-concept-with-hand_23-2150389097.jpg?w=826&t=st=1703885301~exp=1703885901~hmac=3da47624c3a6954051e3beeff43d1884db6867bc6bea44e999882bf8a018c30b',
+        'https://www.industryglobalnews24.com/images/the-deal-between-telecom-and-corporate-finance.jpeg',
+        'https://schorlarboard.com/wp-content/uploads/2022/07/ge.jpg',
+        'https://d25ecq9zgd9hts.cloudfront.net/img/2018/01/graduation.jpg',
+        'https://techcrunch.com/wp-content/uploads/2019/11/gettyimages-610949074-1.jpg',
+        'https://png.pngtree.com/thumb_back/fh260/background/20221214/pngtree-high-school-graduates-students-diploma-gown-happy-photo-image_42806370.jpg',
+        'https://img.etimg.com/thumb/width-640,height-480,imgsize-87324,resizemode-75,msid-103720911/jobs/fresher/engineering-students-brace-for-a-tough-placement-season/2.jpg',
+      ];
+
+      const randomImage = images[Math.floor(Math.random() * images.length)];
+
+      setBackgroundImage(randomImage);
+    };
+
+    const intervalId = setInterval(changeBackgroundImage, 3000);
+
+    return () => clearInterval(intervalId);
+  }, []);
+
+ 
+  const navigateto=()=> {
+    navigate('/contact');
+
+  };
+
+  const ForgetPwd=()=> {
+    navigate('/forgetpassword');
+
 
     try {
       const response = await axios.post('http://localhost:8080/user/login', {
@@ -91,6 +135,7 @@ export default function Login() {
       console.error('Login error:', error);
       alert('An error occurred during login.');
     }
+
   };
 
   return (
