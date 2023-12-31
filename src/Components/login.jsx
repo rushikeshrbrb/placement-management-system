@@ -4,6 +4,7 @@ import '../Styles/login.css';
 import '@mdi/font/css/materialdesignicons.min.css';
 import cdaclogo from '../Images/C-DAC.jpg'
 import { useNavigate } from 'react-router-dom';
+import axios from "axios";
 import {
   MDBBtn,
   MDBContainer,
@@ -11,12 +12,14 @@ import {
   MDBCol,
   MDBInput,
 } from 'mdb-react-ui-kit';
+import ForgetPassword from './ForgetPassword';
 
 export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [userType, setUserType] = useState('');
   const navigate = useNavigate();
+
   const handleEmailChange = (event) => {
     const value = event.target.value;
     setEmail(value);
@@ -27,26 +30,17 @@ export default function Login() {
     setPassword(value);
   };
 
-
-  const handleUserTypeChange = (event) => {
-    const value = event.target.value;
-    setUserType(value);
-  };
-
   const isEmailValid = () => {
-
-
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
   };
 
   const isPasswordValid = () => {
-
     const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
     return passwordRegex.test(password);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
     if (!isEmailValid()) {
@@ -56,11 +50,6 @@ export default function Login() {
 
     if (!isPasswordValid()) {
       alert('Invalid password. It must be at least 8 characters with at least one uppercase letter, one lowercase letter, and one digit.');
-      return;
-    }
-
-    if (!userType) {
-      alert('Please select a user type');
       return;
     }
 
@@ -78,22 +67,89 @@ export default function Login() {
       navigate('/c_sidebar');
     }
 
+  };
+
+  const [backgroundImage, setBackgroundImage] = useState(
+    'https://tie.usprogramming8.com/articles/3241.jpg'
+  );
+
+  useEffect(() => {
+   
+    const changeBackgroundImage = () => {
+     
+      const images = [
+        'https://img.freepik.com/free-photo/human-resources-concept-with-hand_23-2150389097.jpg?w=826&t=st=1703885301~exp=1703885901~hmac=3da47624c3a6954051e3beeff43d1884db6867bc6bea44e999882bf8a018c30b',
+        'https://www.industryglobalnews24.com/images/the-deal-between-telecom-and-corporate-finance.jpeg',
+        'https://schorlarboard.com/wp-content/uploads/2022/07/ge.jpg',
+        'https://d25ecq9zgd9hts.cloudfront.net/img/2018/01/graduation.jpg',
+        'https://techcrunch.com/wp-content/uploads/2019/11/gettyimages-610949074-1.jpg',
+        'https://png.pngtree.com/thumb_back/fh260/background/20221214/pngtree-high-school-graduates-students-diploma-gown-happy-photo-image_42806370.jpg',
+        'https://img.etimg.com/thumb/width-640,height-480,imgsize-87324,resizemode-75,msid-103720911/jobs/fresher/engineering-students-brace-for-a-tough-placement-season/2.jpg',
+      ];
+
+      const randomImage = images[Math.floor(Math.random() * images.length)];
+
+      setBackgroundImage(randomImage);
+    };
+
+    const intervalId = setInterval(changeBackgroundImage, 3000);
+
+    return () => clearInterval(intervalId);
+  }, []);
+
+ 
+  const navigateto=()=> {
+    navigate('/contact');
+
+  };
+
+  const ForgetPwd=()=> {
+    navigate('/forgetpassword');
+
+
+    try {
+      const response = await axios.post('http://localhost:8080/user/login', {
+        email,
+        password,
+      });
+        console.log(response.data);
+      // role base login condition
+      if (response.data.status === true) {
+        // Redirect based on user type
+        if (response.data.role === 'ADMIN') {
+          navigate('/a_sidebar');
+        } else if (response.data.role === 'STUDENT') {
+          navigate('/s_sidebar');
+        } else if (response.data.role === 'COMPANY') {
+          navigate('/c_sidebar');
+        } else {
+          alert('Unknown user type');
+        }
+
+        // Optionally, you can store user data in the state or context for further use
+      } else {
+        // Handle login error, e.g., incorrect credentials
+        alert('Login failed. Please check your credentials.');
+      }
+    } catch (error) {
+      console.error('Login error:', error);
+      alert('An error occurred during login.');
+    }
 
   };
 
   return (
-    <MDBContainer className="my-5 gradient-form">
+    <MDBContainer className="gradient-form custom-col-margin">
       <MDBRow>
-        <MDBCol col="6" className="mb-3 ">
-          <div className="d-flex flex-column mb-5">
+        <MDBCol col="6" >
+          <div className="d-flex flex-column mb-4">
             <div className="text-center"><br />
               <img
                 src="https://www.exemplar.co.in/images/temp-staffing.jpg"
-                style={{ width: '200px', height: '150px' }}
+                style={{ width: '280px', height: '215px' }}
                 alt="logo"
               />
-              <h3 className="mt-1 mb-5 pb-1">Welcome To Training & Placement Cell <br /> CDAC Mumbai  </h3>
-
+             
             </div>
             <form onSubmit={handleSubmit} className="digital-form">
               <center><b style={{color:"violet"}}>Please login to your account</b></center><hr />
@@ -117,9 +173,9 @@ export default function Login() {
                 required
               />
 
-              <label htmlFor="userType" className="form-label mb-2">
+              {/* <label htmlFor="userType" className="form-label mb-2">
                 User Type
-              </label>
+              </label> 
               <select
                 className="form-select mb-4"
                 id="userType"
@@ -132,37 +188,36 @@ export default function Login() {
                 <option value="STUDENT">Student</option>
                 <option value="COMPANY">Company</option>
               </select>
-
+*/}
               <div className="text-center pt-1 mb-5 pb-1">
                 <MDBBtn type="submit" className="mb-2 w-100 digital-btn">
                   Sign in
-                </MDBBtn><br />
-<hr />
-                <a className="text-muted" href="/forgetpassword" >
-                  <p style={{color:'red'}}>Forgot password?</p>
-                </a>
+                </MDBBtn>
+                  <p style={{color:'red', cursor:'pointer'}} onClick={ForgetPwd}>Forgot password?</p>
+
                 <p className="mb-0" style={{color:'blue'}}>Don't have an account?
-                <a href="/contact"> <MDBBtn outline className="mx-2" color="danger">
+                <MDBBtn outline className="mx-2" color="danger" onClick={navigateto}>
                   Contact Admin
-                </MDBBtn></a></p>
+                </MDBBtn></p>
               </div>
             </form>
           </div>
         </MDBCol>
+  <MDBCol  col="6" className="ms-4 p-2 mx-4 digital-col"
+      style={{
+        backgroundImage: `url("${backgroundImage}")`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'top',
+        width: '100%', // Adjust the width if needed
+        height: '600px', // Adjust the height if needed
+      }}>
+         <h3 className="mt-1 mb-5 pb-1 " style={{textAlign:'center', fontWeight:'bolder', backgroundColor:'lightgoldenrodyellow', borderRadius:'10px'}}>Welcome To Traning & Placement Cell <br /> CDAC Mumbai  </h3>
 
-        <MDBCol
-  col="6"
-  className="mb-5 mx-4 digital-col"
-  style={{
-    backgroundImage: 'url("https://d25ecq9zgd9hts.cloudfront.net/img/2018/01/graduation.jpg")',
-    backgroundSize: 'cover',
-    backgroundPosition: 'top',
-  }}
->
-  <div className="d-flex flex-column justify-content-center gradient-custom-1 h-50 mb-4">
-    <div className="text-white px-3 py-4 p-md-3 mx-md-4">
-    <br /><br /><br /><br /><br /><br />
-    <center> <img src={cdaclogo} alt="" height='100px' width='115px' id="no-background"/></center>
+  <div className="d-flex flex-column justify-content-center gradient-custom-1 h-50 mb-2">
+
+    <div className="text-white px-2 py-4 p-md-3 mx-md-2">
+   <br /><br />
+    <center> <img src={cdaclogo} alt="" height='106px' width='115px' id="no-background"/></center>
    
       <marquee behavior="scroll" direction="left"><center>
         <b style={{ color: 'yellow', fontSize: 'larger' }}>
@@ -170,7 +225,7 @@ export default function Login() {
           Common Campus Placement Program March-2024 <br /> Sep-2023 Batch
         </b></center>
       </marquee>
-      <br /><br /><br /> <br /><h4 className="mb-4">We are more than just a company</h4>
+      <h4 className="mb-4">We are more than just a company</h4>
       <hr />
       <p>A Campus Recruitment Training Program is designed to prepare students for the recruitment process conducted by 
         various companies during campus placements. Providing clear and concise information will help potential participants understand the value of the Campus Recruitment Training Program. </p>

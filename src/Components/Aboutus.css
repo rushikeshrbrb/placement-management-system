@@ -1,4 +1,4 @@
-/* TeamCard.css */
+/* 
 
 .card-container {
   display: flex;
@@ -10,7 +10,7 @@
   width: 20rem;
   border: 1px solid #ccc;
   border-radius: 5px;
-  margin: 10px; /* Add margin between cards if needed */
+  margin: 10px; 
   transition: transform 0.3s;
   box-shadow: inset;
 }
@@ -25,7 +25,7 @@
 }
 
   .card:hover {
-    transform: scale(1.10);
+    transform: scale(1.15);
   }
 
   .card:hover .price::before {
@@ -50,7 +50,32 @@
     transform: translate(-50%, 0%);
   } 
 
-  /* .card:hover {
+  .card:hover {
     transform: scale(1.5); 
   }
+
  */
+
+ .aboutus{
+  margin-top: -15px;
+  align-items: center;
+  border-radius: 15px;
+  transition: transform 0.3s;
+  box-shadow: 0px 0px 5px 0px #767777;
+ }
+
+ .aboutus1{
+  align-items: center;
+  transition: transform 0.3s;
+  border-radius: 10px;
+  box-shadow: 0px 0px 5px 0px #8b8585;
+ }
+
+
+ .aboutus2{
+  align-items: center;
+  border-radius: 10px;
+  transition: transform 0.3s;
+  box-shadow: 0px 0px 5px 0px #959898;
+  background: linear-gradient(45deg, #ffb5ff, #fcfcfc);
+ }

@@ -7,6 +7,7 @@ import CompanyRegister from './companyRegister';
 import { useNavigate } from 'react-router';
 import StudentRegister from './studentRegister';
 import UpdateP from './UpdateP';
+import Registration from './Registration';
 
 export default function AdminSidebar() {
   useEffect(() => {
@@ -39,8 +40,7 @@ export default function AdminSidebar() {
             <Image height={100} width={100} src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" roundedCircle fluid />
             <a class="active" >Admin: admin</a>
             <a onClick={() => handleButtonClick('adminprofile')} >Profile</a>
-            <a onClick={() => handleButtonClick('Registerstudent')} >Register Student</a>
-            <a onClick={() => handleButtonClick('RegisterCompany')} >Register Company</a>
+            <a onClick={() => handleButtonClick('RegisterUser')} >Register User</a>
             <a onClick={() => handleButtonClick('managestudent')} >Manage student</a>
             <a onClick={() => handleButtonClick('managecompany')} >Manage company</a>
             <a onClick={() => handleButtonClick('placedstudent')} >Placed Student</a>
@@ -57,9 +57,7 @@ export default function AdminSidebar() {
           {currentPage === 'studentRegister' && <StudentRegister/>}
            {/* profile component to be write here */}
 
-          {currentPage === 'Registerstudent' && <StudentRegister/>}
-
-          {currentPage === 'RegisterCompany' && <CompanyRegister />}
+          {currentPage === 'RegisterUser' && <Registration/>}
 
           {/* managestudent component to be write here */}
           {currentPage === 'managestudent' && <CompanyRegister />}

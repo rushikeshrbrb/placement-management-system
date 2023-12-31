@@ -57,6 +57,7 @@ export default function Contact() {
 
         <MDBCol col="4" md="6">
           <div className="divider d-flex align-items-center my-4">
+          <img width="40" height="40" src="https://img.icons8.com/ios-filled/50/ringing-phone.png" alt="ringing-phone"/>
             <h1 className="text-center fw-bold mx-3 mb-0">Contact Us</h1>
           </div>
           <form onSubmit={handleSubmit}>
