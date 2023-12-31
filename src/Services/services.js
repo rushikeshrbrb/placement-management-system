@@ -10,6 +10,7 @@ export async function saveInfo(regData){
         }
     }
 
+    
 
     
 //for update company detalis
