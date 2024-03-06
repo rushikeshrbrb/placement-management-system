@@ -1,0 +1,16 @@
+#head{
+    color:black;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    background-color: pink;
+    border-radius: 25px;
+}
+
+.par{
+    border:2px solid black;
+    border-radius:5;
+    color:white;
+    font-size: larger;
+    text-align: center;
+    border-radius: 35px;
+}

@@ -1,0 +1,152 @@
+/* 
+@import url('https://fonts.googleapis.com/css?family=Abel|Abril+Fatface|Alegreya|Arima+Madurai|Dancing+Script|Dosis|Merriweather|Oleo+Script|Overlock|PT+Serif|Pacifico|Playball|Playfair+Display|Share|Unica+One|Vibur');
+
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+ body {
+    background-image: linear-gradient(-225deg, #E3FDF5 0%, #FFE6FA 100%);
+    background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    font-family: 'Vibur', cursive;
+    font-family: 'Abel', sans-serif;
+    opacity: .95;
+} 
+
+
+form {
+    width: 90%;
+    max-width: 800px;
+    min-height: 600px;
+    height: auto;
+    border-radius: 5px;
+    margin: 2% auto;
+    box-shadow: 0 9px 50px hsla(20, 67%, 75%, 0.31);
+    padding: 2%;
+    background-image: linear-gradient(-225deg, #E3FDF5 50%, #FFE6FA 50%);
+}
+
+
+form .con {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin: 0 auto;
+}
+
+
+header {
+    margin: 2% auto 3% auto;
+    text-align: center;
+}
+
+
+header h2 {
+    font-size: 250%;
+    font-family: 'Playfair Display', serif;
+    color: #010b06;
+}
+
+
+.form-input {
+    width: calc(100% - 18px);
+    height: 40px;
+    margin-top: 1%;
+    margin-bottom: 15px;
+    padding: 15px;
+    font-size: 16px;
+    font-family: 'Abel', sans-serif;
+    color: #121212;
+    outline: none;
+    border: 2px;
+    border-bottom: 1px solid #ccc;
+    border-radius: 0;
+    transition: 0.2s linear;
+    position: relative;
+}
+
+
+.input-item label {
+    position: 50px;
+    padding-right: 20px;
+}
+
+
+.input-item label::before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    border: 2px solid #265678;
+    box-sizing: border-box;
+    position: relative;
+    pointer-events: none;
+    z-index: -1;
+}
+
+
+.form-input:focus + .input-item label::before {
+    border: 1px solid #264b59;
+}
+
+
+.form-input:not(:placeholder-shown) + .input-item label::before {
+    border: 1px solid #31707d;
+}
+
+
+@media only screen and (max-width: 768px) {
+    .form-input {
+        width: 100%;
+    }
+}
+
+
+button {
+    display: inline-block;
+   
+    width: 300px;
+    height: 30px;
+    padding: 0 20px;
+    background: #58a4a1;
+    border-radius: 10px;
+    outline: 10px;
+    border: 2px;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.2s linear;
+    margin: 7% auto;
+    letter-spacing: 0.05em;
+}
+
+
+.submit {
+    background: #42a591;
+  
+    border: 5px;
+}
+
+
+button:hover {
+    transform: translateY(3px);
+    box-shadow: none;
+}
+
+
+button:hover {
+    animation: ani9 0.4s ease-in-out infinite alternate;
+}
+
+@keyframes ani9 {
+    0% { transform: translateY(3px); }
+    100% { transform: translateY(5px); }
+}
+
+tbody {
+    border: none;
+} */
